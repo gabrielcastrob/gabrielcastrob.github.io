@@ -20,8 +20,8 @@ SITE = {
     "description": "Geographer & remote sensing researcher — MSc Geo-information "
                    "Science at Wageningen University & Research.",
     "author": "Gabriel Castro B.",
-    # URL final del sitio (sitio de usuario de GitHub Pages):
-    "url": "https://gabrielcastrob.github.io",
+    # URL final del sitio (GitHub Pages, repo de proyecto):
+    "url": "https://gabrielcastrob.github.io/MGI_PortafolioVis/",
     "lang": "en",
 }
 
