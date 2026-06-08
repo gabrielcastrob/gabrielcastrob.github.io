@@ -76,28 +76,10 @@
       <span class="section__kicker">01 — Profile</span>
       <h2>About me</h2>
     </div>
-    <div class="about">
+    <div class="about about--single">
       <div class="about__text reveal">
         <p class="about__lead">Geographer with 3+ years of research experience in land-surface phenology, land-use / land-cover change and climate analysis using optical remote sensing, UAV multispectral imagery and GIS across Chilean ecosystems. I am currently pursuing an MSc in Geo-information Science at Wageningen University &amp; Research, focusing on machine learning and deep learning methods for remote sensing applications.</p>
         <p>I am driven by applying machine learning and deep learning to real-world problems in the remote sensing domain — object detection, segmentation and classification of aerial and satellite imagery — and by communicating technical results clearly to specialist and non-specialist audiences alike.</p>
-      </div>
-      <div class="about__stats reveal">
-        <div class="stat">
-          <span class="stat__value" data-count="3+">3+</span>
-          <span class="stat__label">Years of research</span>
-        </div>
-        <div class="stat">
-          <span class="stat__value" data-count="3">3</span>
-          <span class="stat__label">Peer-reviewed papers</span>
-        </div>
-        <div class="stat">
-          <span class="stat__value" data-count="4">4</span>
-          <span class="stat__label">ANID-funded projects</span>
-        </div>
-        <div class="stat">
-          <span class="stat__value" data-count="100+">100+</span>
-          <span class="stat__label">UAV flight hours</span>
-        </div>
       </div>
     </div>
   </section>
@@ -205,46 +187,142 @@
     </div>
   </section>
 
-  <!-- ======================= MAP SCROLLYTELLING ======================= -->
-  <section class="story" id="work">
-    <div class="story__sticky">
-      <div id="story-map"></div>
-      <div class="story__overlay">
-        <span class="section__kicker">04 — In the field</span>
-        <h2>Research in the field</h2>
+  <!-- ======================= WORK & FIELD (3 pestañas + mapa Esri) ======================= -->
+  <section class="section" id="work">
+    <div class="section__head reveal">
+      <span class="section__kicker">04 — Work &amp; field</span>
+      <h2>Work &amp; field</h2>
+      <p class="section__intro">From peer-reviewed research in Chilean drylands to UAV field campaigns and MSc projects at Wageningen. The map shows the main sites behind this work; switch tabs to explore each strand.</p>
+    </div>
+
+    <!-- Mapa interactivo con base física de Esri -->
+    <div id="work-map" class="reveal"></div>
+
+    <!-- Botones de pestañas -->
+    <div class="tabs reveal">
+      <button class="tab-btn is-active" data-tab="papers">
+        Paper work
+      </button>
+      <button class="tab-btn" data-tab="field">
+        Field work
+      </button>
+      <button class="tab-btn" data-tab="wageningen">
+        Wageningen projects
+      </button>
+    </div>
+
+    <!-- Paneles de pestañas -->
+    <div class="tab-panel is-active" id="tab-papers">
+      <p class="tab-panel__intro">Selected figures and key results from my peer-reviewed publications on drought, vegetation and land change in Chile.</p>
+      <div class="work-grid">
+        <article class="work-card reveal">
+          <div class="work-card__media">
+            <a href="assets/img/papers/aridenv_drought.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/aridenv_drought.png" alt="Shrub microsites &amp; prolonged drought in semiarid ecosystems" loading="lazy" />
+            </a>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Journal of Arid Environments · 2026</span>
+            <h3>Shrub microsites &amp; prolonged drought in semiarid ecosystems</h3>
+            <p class="work-card__summary">Comparison of vegetation greenness (NDVI), shrub cover and annual precipitation across three semiarid sites (Papudo, Lampa, Rapel) between the pre-megadrought (2000–2009) and megadrought (2010–2023) periods.</p>
+            <p class="work-card__results"><strong>Key result —</strong> Greenness and shrub cover declined significantly under the megadrought, yet soil nutrients accumulated within shrub microsites — revealing a decoupling of above- and below-ground responses.</p>
+            <a class="pub__doi" href="https://doi.org/10.1016/j.jaridenv.2026.105660" target="_blank" rel="noopener">DOI: 10.1016/j.jaridenv.2026.105660 ↗</a>
+          </div>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-card__media work-card__media--multi">
+            <a href="assets/img/papers/greening_studyarea.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/greening_studyarea.png" alt="Spatial inequality of urban greening in the Gran Valparaíso" loading="lazy" />
+            </a>
+            <a href="assets/img/papers/greening_anomaly.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/greening_anomaly.png" alt="Spatial inequality of urban greening in the Gran Valparaíso" loading="lazy" />
+            </a>
+            <a href="assets/img/papers/greening_timeseries.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/greening_timeseries.png" alt="Spatial inequality of urban greening in the Gran Valparaíso" loading="lazy" />
+            </a>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Urban Forestry &amp; Urban Greening · 2025</span>
+            <h3>Spatial inequality of urban greening in the Gran Valparaíso</h3>
+            <p class="work-card__summary">Mapping of public, peri-urban and urban green areas across the Gran Valparaíso conurbation and their NDVI anomalies before and during the Central Chile megadrought (2010–2023).</p>
+            <p class="work-card__results"><strong>Key result —</strong> Urban greening loss was spatially unequal: peri-urban and public green spaces deteriorated most, exposing environmental inequality between neighbourhoods.</p>
+            <a class="pub__doi" href="https://doi.org/10.1016/j.ufug.2025.129080" target="_blank" rel="noopener">DOI: 10.1016/j.ufug.2025.129080 ↗</a>
+          </div>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-card__media work-card__media--multi">
+            <a href="assets/img/papers/hyperdrought_sst.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/hyperdrought_sst.png" alt="Hyper-droughts in central Chile: drivers, impacts &amp; projections" loading="lazy" />
+            </a>
+            <a href="assets/img/papers/hyperdrought_hydro.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/hyperdrought_hydro.png" alt="Hyper-droughts in central Chile: drivers, impacts &amp; projections" loading="lazy" />
+            </a>
+            <a href="assets/img/papers/hyperdrought_ndvi.png" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="assets/img/papers/hyperdrought_ndvi.png" alt="Hyper-droughts in central Chile: drivers, impacts &amp; projections" loading="lazy" />
+            </a>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Hydrology &amp; Earth System Sciences · 2025</span>
+            <h3>Hyper-droughts in central Chile: drivers, impacts &amp; projections</h3>
+            <p class="work-card__summary">Characterisation of central Chile's hyper-droughts linking ocean–atmosphere drivers (SST &amp; sea-level pressure) to precipitation, river discharge, snowpack and vegetation responses (Landsat NDVI) over more than a century.</p>
+            <p class="work-card__results"><strong>Key result —</strong> Recent droughts are unprecedented in the instrumental record, with compounding deficits in rainfall, streamflow and snow water equivalent and lasting impacts on natural and irrigated vegetation.</p>
+            <a class="pub__doi" href="https://doi.org/10.5194/hess-29-5347-2025" target="_blank" rel="noopener">DOI: 10.5194/hess-29-5347-2025 ↗</a>
+          </div>
+        </article>
       </div>
     </div>
-    <div class="story__steps">
-      <div class="story__intro">
-        <p>A guided tour through the landscapes behind my work. Scroll to move across study sites — these layers are placeholder demos and will be replaced with real products soon.</p>
+    <div class="tab-panel" id="tab-field">
+      <p class="tab-panel__intro">UAV surveys, ground-truthing and field campaigns — from central Chile to Patagonia. (Upload your photos to assets/img/field/ and link them below.)</p>
+      <div class="work-grid">
+        <article class="work-card reveal">
+          <div class="work-card__placeholder">
+            <span>Drone · DJI M300 RTK</span><small>Image coming soon</small>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Drone · DJI M300 RTK</span>
+            <h3>UAV multispectral survey (demo)</h3>
+            <p class="work-card__summary">High-resolution multispectral flights to validate satellite drought signals on the ground.</p>
+            <p class="work-card__results"><strong>Key result —</strong> Placeholder — add your photos and a short note about the campaign.</p>
+          </div>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-card__placeholder">
+            <span>Fieldwork · Aysén, Chile</span><small>Image coming soon</small>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Fieldwork · Aysén, Chile</span>
+            <h3>Patagonia field campaign (demo)</h3>
+            <p class="work-card__summary">Ground data collection and landscape survey in Chilean Patagonia.</p>
+            <p class="work-card__results"><strong>Key result —</strong> Placeholder — add your photos and a short note about the campaign.</p>
+          </div>
+        </article>
       </div>
-      <div class="story-step" data-index="0">
-        <div class="story-step__card">
-          <span class="story-step__num">01</span>
-          <h3>Central Chile — the megadrought</h3>
-          <p>Since 2010, central Chile has endured an uninterrupted megadrought. I mapped vegetation greenness and urban greening dynamics across the Gran Valparaíso conurbation.</p>
-        </div>
-      </div>
-      <div class="story-step" data-index="1">
-        <div class="story-step__card">
-          <span class="story-step__num">02</span>
-          <h3>Petorca river basin — irrigation patterns</h3>
-          <p>Using MODIS EVI time series and hydro-climate records I evaluated the spatio-temporal evolution of irrigation in agricultural areas of the Petorca basin.</p>
-        </div>
-      </div>
-      <div class="story-step" data-index="2">
-        <div class="story-step__card">
-          <span class="story-step__num">03</span>
-          <h3>UAV multispectral campaigns</h3>
-          <p>I flew DJI M300 RTK and Mavic platforms to capture high-resolution multispectral imagery, validating satellite drought signals on the ground.</p>
-        </div>
-      </div>
-      <div class="story-step" data-index="3">
-        <div class="story-step__card">
-          <span class="story-step__num">04</span>
-          <h3>Wageningen — a new chapter</h3>
-          <p>Now in the Netherlands, I apply deep learning to earth observation — from point-cloud processing to object detection on aerial imagery.</p>
-        </div>
+    </div>
+    <div class="tab-panel" id="tab-wageningen">
+      <p class="tab-panel__intro">Products from my MSc Geo-information Science courses — advanced earth observation, machine learning and deep learning. (Add your course outputs to assets/img/wageningen/.)</p>
+      <div class="work-grid">
+        <article class="work-card reveal">
+          <div class="work-card__placeholder">
+            <span>AIN31306 · Deep Learning</span><small>Image coming soon</small>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">AIN31306 · Deep Learning</span>
+            <h3>Deep learning for object detection (demo)</h3>
+            <p class="work-card__summary">CNN / transformer models for detecting and segmenting objects in aerial imagery.</p>
+            <p class="work-card__results"><strong>Key result —</strong> Placeholder — add your project figure and a short description of the method and outcome.</p>
+          </div>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-card__placeholder">
+            <span>GRS32306 · Advanced Earth Observation</span><small>Image coming soon</small>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">GRS32306 · Advanced Earth Observation</span>
+            <h3>Advanced earth observation (demo)</h3>
+            <p class="work-card__summary">Point-cloud processing and time-series analysis of multi-sensor satellite data.</p>
+            <p class="work-card__results"><strong>Key result —</strong> Placeholder — add your project figure and a short description of the method and outcome.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -410,8 +488,8 @@
     <p>Built with Python &amp; Leaflet · © 2026 Gabriel Castro B.</p>
   </footer>
 
-  <!-- Datos del scrollytelling pasados desde Python a JavaScript -->
-  <script id="map-story-data" type="application/json">[{"center": [-33.05, -71.4], "layer": "study_basins", "text": "Since 2010, central Chile has endured an uninterrupted megadrought. I mapped vegetation greenness and urban greening dynamics across the Gran Valpara\u00edso conurbation.", "title": "Central Chile \u2014 the megadrought", "zoom": 9}, {"center": [-32.25, -70.95], "layer": "ndvi_grid", "text": "Using MODIS EVI time series and hydro-climate records I evaluated the spatio-temporal evolution of irrigation in agricultural areas of the Petorca basin.", "title": "Petorca river basin \u2014 irrigation patterns", "zoom": 10}, {"center": [-32.78, -71.22], "layer": "flight_area", "text": "I flew DJI M300 RTK and Mavic platforms to capture high-resolution multispectral imagery, validating satellite drought signals on the ground.", "title": "UAV multispectral campaigns", "zoom": 13}, {"center": [51.985, 5.665], "layer": "wageningen", "text": "Now in the Netherlands, I apply deep learning to earth observation \u2014 from point-cloud processing to object detection on aerial imagery.", "title": "Wageningen \u2014 a new chapter", "zoom": 12}]</script>
+  <!-- Datos del mapa pasados desde Python a JavaScript -->
+  <script id="work-map-data" type="application/json">{"center": [-20.0, -40.0], "markers": [{"coords": [-33.05, -71.45], "group": "papers", "name": "Gran Valpara\u00edso, Chile \u2014 urban greening study"}, {"coords": [-32.3, -71.0], "group": "papers", "name": "Petorca / Papudo, Chile \u2014 drought \u0026 phenology"}, {"coords": [-34.5, -70.8], "group": "papers", "name": "Central Chile \u2014 hyper-droughts"}, {"coords": [-46.5, -72.3], "group": "field", "name": "Chilean Patagonia \u2014 field campaign"}, {"coords": [51.985, 5.665], "group": "wageningen", "name": "Wageningen, Netherlands \u2014 MSc Geo-information Science"}], "zoom": 3}</script>
 
   <!-- Lógica del sitio: mapas, gráficos, scroll, animaciones -->
   <script src="assets/js/main.js"></script>

@@ -50,7 +50,7 @@ def build():
         skills=content.SKILLS,
         education=content.EDUCATION,
         experience=content.EXPERIENCE,
-        map_story=content.MAP_STORY,
+        work=content.WORK,
         visuals=content.VISUALS,
         publications=content.PUBLICATIONS,
         conferences=content.CONFERENCES,

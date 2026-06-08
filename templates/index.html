@@ -76,18 +76,10 @@
       <span class="section__kicker">01 — Profile</span>
       <h2>{{ about.heading }}</h2>
     </div>
-    <div class="about">
+    <div class="about about--single">
       <div class="about__text reveal">
         <p class="about__lead">{{ about.profile | safe }}</p>
         <p>{{ about.interests | safe }}</p>
-      </div>
-      <div class="about__stats reveal">
-        {% for s in about.stats %}
-        <div class="stat">
-          <span class="stat__value" data-count="{{ s.value }}">{{ s.value }}</span>
-          <span class="stat__label">{{ s.label }}</span>
-        </div>
-        {% endfor %}
       </div>
     </div>
   </section>
@@ -144,29 +136,60 @@
     </div>
   </section>
 
-  <!-- ======================= MAP SCROLLYTELLING ======================= -->
-  <section class="story" id="work">
-    <div class="story__sticky">
-      <div id="story-map"></div>
-      <div class="story__overlay">
-        <span class="section__kicker">04 — In the field</span>
-        <h2>{{ map_story.heading }}</h2>
-      </div>
+  <!-- ======================= WORK & FIELD (3 pestañas + mapa Esri) ======================= -->
+  <section class="section" id="work">
+    <div class="section__head reveal">
+      <span class="section__kicker">04 — Work &amp; field</span>
+      <h2>{{ work.heading | safe }}</h2>
+      <p class="section__intro">{{ work.intro | safe }}</p>
     </div>
-    <div class="story__steps">
-      <div class="story__intro">
-        <p>{{ map_story.intro | safe }}</p>
-      </div>
-      {% for st in map_story.steps %}
-      <div class="story-step" data-index="{{ loop.index0 }}">
-        <div class="story-step__card">
-          <span class="story-step__num">{{ "%02d"|format(loop.index) }}</span>
-          <h3>{{ st.title | safe }}</h3>
-          <p>{{ st.text | safe }}</p>
-        </div>
-      </div>
+
+    <!-- Mapa interactivo con base física de Esri -->
+    <div id="work-map" class="reveal"></div>
+
+    <!-- Botones de pestañas -->
+    <div class="tabs reveal">
+      {% for tab in work.tabs %}
+      <button class="tab-btn{% if loop.first %} is-active{% endif %}" data-tab="{{ tab.id }}">
+        {{ tab.label }}
+      </button>
       {% endfor %}
     </div>
+
+    <!-- Paneles de pestañas -->
+    {% for tab in work.tabs %}
+    <div class="tab-panel{% if loop.first %} is-active{% endif %}" id="tab-{{ tab.id }}">
+      <p class="tab-panel__intro">{{ tab.intro | safe }}</p>
+      <div class="work-grid">
+        {% for it in tab['items'] %}
+        <article class="work-card reveal">
+          {% if it.images %}
+          <div class="work-card__media{% if it.images|length > 1 %} work-card__media--multi{% endif %}">
+            {% for img in it.images %}
+            <a href="{{ img }}" target="_blank" rel="noopener" class="work-card__imglink">
+              <img src="{{ img }}" alt="{{ it.title | safe }}" loading="lazy" />
+            </a>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="work-card__placeholder">
+            <span>{{ it.tag | safe }}</span><small>Image coming soon</small>
+          </div>
+          {% endif %}
+          <div class="work-card__body">
+            <span class="work-card__tag">{{ it.tag | safe }}</span>
+            <h3>{{ it.title | safe }}</h3>
+            <p class="work-card__summary">{{ it.summary | safe }}</p>
+            <p class="work-card__results"><strong>Key result —</strong> {{ it.results | safe }}</p>
+            {% if it.doi %}
+            <a class="pub__doi" href="https://doi.org/{{ it.doi }}" target="_blank" rel="noopener">DOI: {{ it.doi }} ↗</a>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
   </section>
 
   <!-- ======================= VISUALS / PRODUCTS ======================= -->
@@ -288,8 +311,8 @@
     <p>{{ footer.text | safe }}</p>
   </footer>
 
-  <!-- Datos del scrollytelling pasados desde Python a JavaScript -->
-  <script id="map-story-data" type="application/json">{{ map_story.steps | tojson }}</script>
+  <!-- Datos del mapa pasados desde Python a JavaScript -->
+  <script id="work-map-data" type="application/json">{{ work.map | tojson }}</script>
 
   <!-- Lógica del sitio: mapas, gráficos, scroll, animaciones -->
   <script src="assets/js/main.js"></script>

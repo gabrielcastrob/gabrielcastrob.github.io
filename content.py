@@ -63,13 +63,6 @@ ABOUT = {
         "by communicating technical results clearly to specialist and "
         "non-specialist audiences alike."
     ),
-    # Cifras destacadas (puedes editar número y etiqueta, o añadir/quitar):
-    "stats": [
-        {"value": "3+",   "label": "Years of research"},
-        {"value": "3",    "label": "Peer-reviewed papers"},
-        {"value": "4",    "label": "ANID-funded projects"},
-        {"value": "100+", "label": "UAV flight hours"},
-    ],
 }
 
 # -----------------------------------------------------------------------------
@@ -177,53 +170,174 @@ EXPERIENCE = [
 ]
 
 # -----------------------------------------------------------------------------
-# 7. SCROLLYTELLING DE MAPA  (sección interactiva estilo ArcGIS Experience)
-#    Cada "step" es un panel de texto que, al hacer scroll, cambia la vista del
-#    mapa Leaflet (center = [lat, lon], zoom) y resalta una capa de datos.
-#    Los datos GeoJSON ficticios están en  assets/data/  y se pueden reemplazar
-#    por los tuyos reales más adelante (mismo nombre de archivo o cambia 'layer').
+# 7. SECCIÓN "WORK" — trabajos divididos en 3 pestañas:
+#       1) papers      -> figuras y resultados de tus publicaciones
+#       2) field       -> trabajo de campo (dron, terreno Patagonia, etc.)
+#       3) wageningen  -> proyectos de los cursos del máster MGI
+#
+#    Incluye un MAPA INTERACTIVO con base física de Esri (no satélite) que
+#    muestra los sitios de trabajo. Edita 'map.markers' para añadir/mover puntos.
+#
+#    Cada item de las pestañas:
+#       title    -> título del trabajo
+#       tag      -> etiqueta corta (revista/año, tipo de trabajo, curso...)
+#       images   -> lista de rutas a imágenes (se muestran en la tarjeta)
+#       summary  -> resumen breve
+#       results  -> resultado/hallazgo principal
+#       doi      -> (opcional) DOI; se convierte en enlace
 # -----------------------------------------------------------------------------
-MAP_STORY = {
-    "heading": "Research in the field",
-    "intro": "A guided tour through the landscapes behind my work. "
-             "Scroll to move across study sites — these layers are placeholder "
-             "demos and will be replaced with real products soon.",
-    "steps": [
+WORK = {
+    "heading": "Work &amp; field",
+    "intro": "From peer-reviewed research in Chilean drylands to UAV field "
+             "campaigns and MSc projects at Wageningen. The map shows the main "
+             "sites behind this work; switch tabs to explore each strand.",
+
+    # --- Mapa con base física de Esri (World Physical Map) ---
+    "map": {
+        "center": [-20.0, -40.0],   # vista que abarca Chile y Europa
+        "zoom": 3,
+        "markers": [
+            {"name": "Gran Valparaíso, Chile — urban greening study",
+             "coords": [-33.05, -71.45], "group": "papers"},
+            {"name": "Petorca / Papudo, Chile — drought & phenology",
+             "coords": [-32.30, -71.00], "group": "papers"},
+            {"name": "Central Chile — hyper-droughts",
+             "coords": [-34.50, -70.80], "group": "papers"},
+            {"name": "Chilean Patagonia — field campaign",
+             "coords": [-46.50, -72.30], "group": "field"},
+            {"name": "Wageningen, Netherlands — MSc Geo-information Science",
+             "coords": [51.985, 5.665], "group": "wageningen"},
+        ],
+    },
+
+    # --- Pestañas ---
+    "tabs": [
+        # ===================== 1) TRABAJOS DE PAPER =====================
         {
-            "title": "Central Chile — the megadrought",
-            "center": [-33.05, -71.40],
-            "zoom": 9,
-            "layer": "study_basins",          # -> assets/data/study_basins.geojson
-            "text": "Since 2010, central Chile has endured an uninterrupted "
-                    "megadrought. I mapped vegetation greenness and urban "
-                    "greening dynamics across the Gran Valparaíso conurbation.",
+            "id": "papers",
+            "label": "Paper work",
+            "intro": "Selected figures and key results from my peer-reviewed "
+                     "publications on drought, vegetation and land change in Chile.",
+            "items": [
+                {
+                    "title": "Shrub microsites &amp; prolonged drought in "
+                             "semiarid ecosystems",
+                    "tag": "Journal of Arid Environments · 2026",
+                    "images": ["assets/img/papers/aridenv_drought.png"],
+                    "summary": "Comparison of vegetation greenness (NDVI), shrub "
+                               "cover and annual precipitation across three "
+                               "semiarid sites (Papudo, Lampa, Rapel) between the "
+                               "pre-megadrought (2000–2009) and megadrought "
+                               "(2010–2023) periods.",
+                    "results": "Greenness and shrub cover declined significantly "
+                               "under the megadrought, yet soil nutrients "
+                               "accumulated within shrub microsites — revealing a "
+                               "decoupling of above- and below-ground responses.",
+                    "doi": "10.1016/j.jaridenv.2026.105660",
+                },
+                {
+                    "title": "Spatial inequality of urban greening in the Gran "
+                             "Valparaíso",
+                    "tag": "Urban Forestry &amp; Urban Greening · 2025",
+                    "images": [
+                        "assets/img/papers/greening_studyarea.png",
+                        "assets/img/papers/greening_anomaly.png",
+                        "assets/img/papers/greening_timeseries.png",
+                    ],
+                    "summary": "Mapping of public, peri-urban and urban green "
+                               "areas across the Gran Valparaíso conurbation and "
+                               "their NDVI anomalies before and during the "
+                               "Central Chile megadrought (2010–2023).",
+                    "results": "Urban greening loss was spatially unequal: "
+                               "peri-urban and public green spaces deteriorated "
+                               "most, exposing environmental inequality between "
+                               "neighbourhoods.",
+                    "doi": "10.1016/j.ufug.2025.129080",
+                },
+                {
+                    "title": "Hyper-droughts in central Chile: drivers, impacts "
+                             "&amp; projections",
+                    "tag": "Hydrology &amp; Earth System Sciences · 2025",
+                    "images": [
+                        "assets/img/papers/hyperdrought_sst.png",
+                        "assets/img/papers/hyperdrought_hydro.png",
+                        "assets/img/papers/hyperdrought_ndvi.png",
+                    ],
+                    "summary": "Characterisation of central Chile's hyper-droughts "
+                               "linking ocean–atmosphere drivers (SST &amp; "
+                               "sea-level pressure) to precipitation, river "
+                               "discharge, snowpack and vegetation responses "
+                               "(Landsat NDVI) over more than a century.",
+                    "results": "Recent droughts are unprecedented in the "
+                               "instrumental record, with compounding deficits in "
+                               "rainfall, streamflow and snow water equivalent and "
+                               "lasting impacts on natural and irrigated vegetation.",
+                    "doi": "10.5194/hess-29-5347-2025",
+                },
+            ],
         },
+
+        # ===================== 2) TRABAJO DE CAMPO =====================
         {
-            "title": "Petorca river basin — irrigation patterns",
-            "center": [-32.25, -70.95],
-            "zoom": 10,
-            "layer": "ndvi_grid",             # -> assets/data/ndvi_grid.geojson
-            "text": "Using MODIS EVI time series and hydro-climate records I "
-                    "evaluated the spatio-temporal evolution of irrigation in "
-                    "agricultural areas of the Petorca basin.",
+            "id": "field",
+            "label": "Field work",
+            "intro": "UAV surveys, ground-truthing and field campaigns — from "
+                     "central Chile to Patagonia. (Upload your photos to "
+                     "assets/img/field/ and link them below.)",
+            "items": [
+                {
+                    "title": "UAV multispectral survey (demo)",
+                    "tag": "Drone · DJI M300 RTK",
+                    "images": [],   # ej: ["assets/img/field/drone_survey.jpg"]
+                    "summary": "High-resolution multispectral flights to validate "
+                               "satellite drought signals on the ground.",
+                    "results": "Placeholder — add your photos and a short note "
+                               "about the campaign.",
+                    "doi": "",
+                },
+                {
+                    "title": "Patagonia field campaign (demo)",
+                    "tag": "Fieldwork · Aysén, Chile",
+                    "images": [],   # ej: ["assets/img/field/patagonia.jpg"]
+                    "summary": "Ground data collection and landscape survey in "
+                               "Chilean Patagonia.",
+                    "results": "Placeholder — add your photos and a short note "
+                               "about the campaign.",
+                    "doi": "",
+                },
+            ],
         },
+
+        # ================= 3) PROYECTOS WAGENINGEN (MGI) =================
         {
-            "title": "UAV multispectral campaigns",
-            "center": [-32.78, -71.22],
-            "zoom": 13,
-            "layer": "flight_area",           # -> assets/data/flight_area.geojson
-            "text": "I flew DJI M300 RTK and Mavic platforms to capture "
-                    "high-resolution multispectral imagery, validating satellite "
-                    "drought signals on the ground.",
-        },
-        {
-            "title": "Wageningen — a new chapter",
-            "center": [51.985, 5.665],
-            "zoom": 12,
-            "layer": "wageningen",            # -> assets/data/wageningen.geojson
-            "text": "Now in the Netherlands, I apply deep learning to earth "
-                    "observation — from point-cloud processing to object "
-                    "detection on aerial imagery.",
+            "id": "wageningen",
+            "label": "Wageningen projects",
+            "intro": "Products from my MSc Geo-information Science courses — "
+                     "advanced earth observation, machine learning and deep "
+                     "learning. (Add your course outputs to "
+                     "assets/img/wageningen/.)",
+            "items": [
+                {
+                    "title": "Deep learning for object detection (demo)",
+                    "tag": "AIN31306 · Deep Learning",
+                    "images": [],
+                    "summary": "CNN / transformer models for detecting and "
+                               "segmenting objects in aerial imagery.",
+                    "results": "Placeholder — add your project figure and a short "
+                               "description of the method and outcome.",
+                    "doi": "",
+                },
+                {
+                    "title": "Advanced earth observation (demo)",
+                    "tag": "GRS32306 · Advanced Earth Observation",
+                    "images": [],
+                    "summary": "Point-cloud processing and time-series analysis of "
+                               "multi-sensor satellite data.",
+                    "results": "Placeholder — add your project figure and a short "
+                               "description of the method and outcome.",
+                    "doi": "",
+                },
+            ],
         },
     ],
 }

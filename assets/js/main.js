@@ -1,19 +1,21 @@
 /* ==========================================================================
-   main.js · Lógica interactiva del portafolio
+   main.js · Lógica interactiva del portafolio (tema claro)
    --------------------------------------------------------------------------
-   Contiene 5 bloques independientes y bien separados:
+   Bloques independientes:
      1) Navbar (scroll + menú móvil)
      2) Animaciones de aparición (IntersectionObserver)
      3) Fondo animado del hero (canvas: red de puntos)
-     4) Scrollytelling de mapa (Leaflet)
-     5) Gráficos interactivos (Plotly)  — DATOS DEMO, edítalos abajo.
+     4) Mapa de trabajos (Leaflet + base FÍSICA de Esri)
+     5) Pestañas de la sección Work (Papers / Field / Wageningen)
+     6) Gráficos interactivos (Plotly)  — DATOS DEMO, edítalos abajo.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar();
   initReveal();
   initHeroCanvas();
-  initStoryMap();
+  initWorkMap();
+  initTabs();
   initCharts();
 });
 
@@ -50,7 +52,7 @@ function initReveal() {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.12 }
   );
   document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
 }
@@ -69,12 +71,12 @@ function initHeroCanvas() {
   function resize() {
     w = canvas.width = canvas.offsetWidth;
     h = canvas.height = canvas.offsetHeight;
-    const count = Math.min(90, Math.floor((w * h) / 16000));
+    const count = Math.min(80, Math.floor((w * h) / 18000));
     pts = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
     }));
   }
 
@@ -87,8 +89,8 @@ function initHeroCanvas() {
       if (p.y < 0 || p.y > h) p.vy *= -1;
 
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(56,225,196,0.7)";
+      ctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(13,148,136,0.55)";   // teal
       ctx.fill();
 
       for (let j = i + 1; j < pts.length; j++) {
@@ -98,7 +100,7 @@ function initHeroCanvas() {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = `rgba(59,158,255,${0.12 * (1 - d / 130)})`;
+          ctx.strokeStyle = `rgba(37,99,235,${0.10 * (1 - d / 130)})`; // azul
           ctx.stroke();
         }
       }
@@ -112,126 +114,98 @@ function initHeroCanvas() {
 }
 
 /* -------------------------------------------------------------------------
-   4) SCROLLYTELLING DE MAPA (Leaflet)
+   4) MAPA DE TRABAJOS (Leaflet + base FÍSICA de Esri)
    --------------------------------------------------------------------------
-   Lee los "steps" inyectados desde content.py (vía build.py) y, al hacer
-   scroll, vuela a cada ubicación y carga su capa GeoJSON desde assets/data/.
+   Lee el objeto 'map' inyectado desde content.py (center, zoom, markers).
+   Usa "Esri World Physical Map" (relieve físico, NO satélite).
+   Para cambiar el mapa base, edita la URL de tileLayer más abajo.
    ------------------------------------------------------------------------- */
-function initStoryMap() {
-  const mapEl = document.getElementById("story-map");
+function initWorkMap() {
+  const mapEl = document.getElementById("work-map");
   if (!mapEl || typeof L === "undefined") return;
 
-  const steps = JSON.parse(
-    document.getElementById("map-story-data").textContent || "[]"
+  const data = JSON.parse(
+    document.getElementById("work-map-data").textContent || "{}"
   );
-  if (!steps.length) return;
+  if (!data.center) return;
 
-  const map = L.map("story-map", {
-    zoomControl: true,
+  const map = L.map("work-map", {
+    center: data.center,
+    zoom: data.zoom || 3,
     scrollWheelZoom: false,
-    attributionControl: true,
-  }).setView(steps[0].center, steps[0].zoom);
+    zoomControl: true,
+  });
 
-  // Mapa base oscuro (CARTO Dark Matter)
+  // ---- Base física de Esri (relieve) ----
   L.tileLayer(
-    "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
     {
-      attribution:
-        '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 19,
+      attribution: "Tiles &copy; Esri — Source: US National Park Service",
+      maxZoom: 13,
+      maxNativeZoom: 8,   // el servicio físico llega a z8; Leaflet sobre-amplía
     }
   ).addTo(map);
 
-  // Estilo de las capas GeoJSON
-  const layerStyle = {
-    color: "#38e1c4",
-    weight: 2,
-    fillColor: "#3b9eff",
-    fillOpacity: 0.18,
+  // Colores de marcador por grupo (papers / field / wageningen)
+  const groupColor = {
+    papers: "#0d9488",
+    field: "#d97706",
+    wageningen: "#2563eb",
   };
 
-  // Cargamos cada capa una sola vez y la guardamos en caché.
-  const layerCache = {};
-  let activeLayer = null;
+  // Marcadores
+  (data.markers || []).forEach((m) => {
+    const color = groupColor[m.group] || "#0d9488";
+    L.circleMarker(m.coords, {
+      radius: 8,
+      color: "#ffffff",
+      weight: 2,
+      fillColor: color,
+      fillOpacity: 0.95,
+    })
+      .addTo(map)
+      .bindPopup(`<strong>${m.name}</strong>`);
+  });
 
-  function showLayer(name) {
-    if (activeLayer) { map.removeLayer(activeLayer); activeLayer = null; }
-    if (!name) return;
-
-    if (layerCache[name]) {
-      activeLayer = layerCache[name].addTo(map);
-      return;
-    }
-    fetch(`assets/data/${name}.geojson`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((geo) => {
-        if (!geo) return;
-        const lyr = L.geoJSON(geo, {
-          style: layerStyle,
-          pointToLayer: (f, latlng) =>
-            L.circleMarker(latlng, {
-              radius: 7,
-              color: "#38e1c4",
-              fillColor: "#38e1c4",
-              fillOpacity: 0.9,
-            }),
-          onEachFeature: (f, l) => {
-            if (f.properties && f.properties.name) {
-              l.bindPopup(`<strong>${f.properties.name}</strong>`);
-            }
-          },
-        });
-        layerCache[name] = lyr;
-        activeLayer = lyr.addTo(map);
-      })
-      .catch(() => {});
-  }
-
-  // Observamos los paneles de texto para activar cada paso al centrarse.
-  let current = -1;
-  function activate(i) {
-    if (i === current) return;
-    current = i;
-    const s = steps[i];
-    map.flyTo(s.center, s.zoom, { duration: 1.4 });
-    showLayer(s.layer);
-
-    document.querySelectorAll(".story-step").forEach((el, idx) =>
-      el.classList.toggle("is-active", idx === i)
-    );
-  }
-
-  const stepEls = document.querySelectorAll(".story-step");
-  const obs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) activate(Number(e.target.dataset.index));
-      });
-    },
-    { threshold: 0.6 }
-  );
-  stepEls.forEach((el) => obs.observe(el));
-
-  // Estado inicial
-  activate(0);
+  // Reajusta tamaño cuando el contenedor se hace visible
+  setTimeout(() => map.invalidateSize(), 300);
 }
 
 /* -------------------------------------------------------------------------
-   5) GRÁFICOS INTERACTIVOS (Plotly)
+   5) PESTAÑAS DE LA SECCIÓN WORK
+   ------------------------------------------------------------------------- */
+function initTabs() {
+  const btns = document.querySelectorAll(".tab-btn");
+  const panels = document.querySelectorAll(".tab-panel");
+  if (!btns.length) return;
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.tab;
+      btns.forEach((b) => b.classList.toggle("is-active", b === btn));
+      panels.forEach((p) =>
+        p.classList.toggle("is-active", p.id === "tab-" + id)
+      );
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------
+   6) GRÁFICOS INTERACTIVOS (Plotly)
    --------------------------------------------------------------------------
    *** DATOS DEMO ***  Cambia los arrays de abajo por tus datos reales.
    ------------------------------------------------------------------------- */
 function initCharts() {
   if (typeof Plotly === "undefined") return;
 
-  const FONT = { family: "Inter, sans-serif", color: "#93a3bb" };
+  const FONT = { family: "Inter, sans-serif", color: "#5b6b82" };
   const baseLayout = {
     paper_bgcolor: "rgba(0,0,0,0)",
     plot_bgcolor: "rgba(0,0,0,0)",
     font: FONT,
     margin: { l: 48, r: 18, t: 10, b: 40 },
-    xaxis: { gridcolor: "#243349", zerolinecolor: "#243349" },
-    yaxis: { gridcolor: "#243349", zerolinecolor: "#243349" },
+    xaxis: { gridcolor: "#e2e8f0", zerolinecolor: "#e2e8f0" },
+    yaxis: { gridcolor: "#e2e8f0", zerolinecolor: "#e2e8f0" },
     legend: { orientation: "h", y: -0.25 },
   };
   const config = { displayModeBar: false, responsive: true };
@@ -247,9 +221,9 @@ function initCharts() {
       ndviEl,
       [
         { x: years, y: ndviWet, name: "Riparian", mode: "lines+markers",
-          line: { color: "#38e1c4", width: 3 } },
+          line: { color: "#0d9488", width: 3 } },
         { x: years, y: ndviDry, name: "Hillslope", mode: "lines+markers",
-          line: { color: "#ffb454", width: 3 } },
+          line: { color: "#d97706", width: 3 } },
       ],
       { ...baseLayout, yaxis: { ...baseLayout.yaxis, title: "NDVI", range: [0.2, 0.7] } },
       config
@@ -266,8 +240,8 @@ function initCharts() {
     Plotly.newPlot(
       lulcEl,
       [
-        { x: classes, y: y2000, name: "2000", type: "bar", marker: { color: "#3b9eff" } },
-        { x: classes, y: y2020, name: "2020", type: "bar", marker: { color: "#38e1c4" } },
+        { x: classes, y: y2000, name: "2000", type: "bar", marker: { color: "#2563eb" } },
+        { x: classes, y: y2020, name: "2020", type: "bar", marker: { color: "#0d9488" } },
       ],
       { ...baseLayout, barmode: "group", yaxis: { ...baseLayout.yaxis, title: "% of basin area" } },
       config
