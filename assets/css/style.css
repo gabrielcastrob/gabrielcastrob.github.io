@@ -195,6 +195,7 @@ img { max-width: 100%; display: block; }
 .story-card__figs a { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; transition: opacity .2s; }
 .story-card__figs a:hover { opacity: .88; }
 .story-card__figs img { width: 100%; display: block; }
+.story-card__video { width: 100%; display: block; border: 1px solid var(--line); border-radius: 8px; background: #000; }
 .story-card__placeholder {
   display: flex; align-items: center; justify-content: center; min-height: 130px; margin-bottom: 14px;
   border-radius: 8px; color: var(--muted);

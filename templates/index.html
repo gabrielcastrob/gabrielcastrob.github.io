@@ -159,10 +159,18 @@
           <h3>{{ st.title | safe }}</h3>
           {% if st.images %}
           <div class="story-card__figs">
-            {% for img in st.images %}
-            <a href="{{ img }}" target="_blank" rel="noopener">
-              <img src="{{ img }}" alt="{{ st.title | safe }}" loading="lazy" />
+            {% for media in st.images %}
+            {% if media.lower().endswith('.mp4') or media.lower().endswith('.webm') or media.lower().endswith('.ogg') %}
+            <video class="story-card__video" controls preload="metadata" playsinline
+                   {% if media.lower().endswith('.webm') %}type="video/webm"{% endif %}>
+              <source src="{{ media }}" />
+              Your browser does not support the video tag.
+            </video>
+            {% else %}
+            <a href="{{ media }}" target="_blank" rel="noopener">
+              <img src="{{ media }}" alt="{{ st.title | safe }}" loading="lazy" />
             </a>
+            {% endif %}
             {% endfor %}
           </div>
           {% else %}

@@ -182,8 +182,12 @@ EXPERIENCE = [
 #     title    -> título del proyecto
 #     center   -> [lat, lon] a donde vuela el mapa
 #     zoom     -> nivel de zoom (mayor = más cerca)
-#     images   -> lista de figuras que se despliegan sobre el mapa
-#                 (deja [] si aún no tienes imágenes; aparecerá un marcador de posición)
+#     images   -> lista de figuras O VIDEOS que se despliegan sobre el mapa.
+#                 - Imágenes: .png .jpg .jpeg .gif .webp  (se muestran y son clicables)
+#                 - Videos:   .mp4 .webm .ogg  (se muestran con reproductor integrado)
+#                 Guarda los videos en assets/img/video/ (o donde prefieras) y pon
+#                 aquí su ruta, p. ej. "assets/img/video/dron_terreno.mp4".
+#                 Deja [] si aún no tienes nada; aparecerá un marcador de posición.
 #     summary  -> resumen breve
 #     results  -> resultado/hallazgo principal
 #     doi      -> (opcional) DOI; se convierte en enlace
