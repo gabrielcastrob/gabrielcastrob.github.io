@@ -170,282 +170,187 @@ EXPERIENCE = [
 ]
 
 # -----------------------------------------------------------------------------
-# 7. SECCIÓN "WORK" — trabajos divididos en 3 pestañas:
-#       1) papers      -> figuras y resultados de tus publicaciones
-#       2) field       -> trabajo de campo (dron, terreno Patagonia, etc.)
-#       3) wageningen  -> proyectos de los cursos del máster MGI
+# 7. SECCIÓN "WORK" — SCROLLYTELLING DE MAPA
+# -----------------------------------------------------------------------------
+#  Es un mapa interactivo (base FÍSICA de Esri) que ocupa la pantalla y, al hacer
+#  scroll, VUELA a la ubicación de cada proyecto y despliega sus FIGURAS sobre el
+#  mapa. Reúne los 3 tipos de trabajo en un solo recorrido.
 #
-#    Incluye un MAPA INTERACTIVO con base física de Esri (no satélite) que
-#    muestra los sitios de trabajo. Edita 'map.markers' para añadir/mover puntos.
+#  Cada paso ("step"):
+#     group    -> "papers" | "field" | "wageningen"  (color del marcador/etiqueta)
+#     tag      -> etiqueta corta (revista/año, curso, tipo de trabajo...)
+#     title    -> título del proyecto
+#     center   -> [lat, lon] a donde vuela el mapa
+#     zoom     -> nivel de zoom (mayor = más cerca)
+#     images   -> lista de figuras que se despliegan sobre el mapa
+#                 (deja [] si aún no tienes imágenes; aparecerá un marcador de posición)
+#     summary  -> resumen breve
+#     results  -> resultado/hallazgo principal
+#     doi      -> (opcional) DOI; se convierte en enlace
 #
-#    Cada item de las pestañas:
-#       title    -> título del trabajo
-#       tag      -> etiqueta corta (revista/año, tipo de trabajo, curso...)
-#       images   -> lista de rutas a imágenes (se muestran en la tarjeta)
-#       summary  -> resumen breve
-#       results  -> resultado/hallazgo principal
-#       doi      -> (opcional) DOI; se convierte en enlace
+#  Para añadir un proyecto: copia un bloque { ... } y rellénalo.
+#  Para cambiar el mapa base, edita la URL del tileLayer en assets/js/main.js.
 # -----------------------------------------------------------------------------
 WORK = {
     "heading": "Work &amp; field",
-    "intro": "From peer-reviewed research in Chilean drylands to UAV field "
-             "campaigns and MSc projects at Wageningen. The map shows the main "
-             "sites behind this work; switch tabs to explore each strand.",
+    "intro": "Scroll to travel across the sites behind my work — peer-reviewed "
+             "research in Chile, UAV field campaigns, and MSc projects at "
+             "Wageningen. Each stop reveals its figures over the map.",
 
-    # --- Mapa con base física de Esri (World Physical Map) ---
-    "map": {
-        "center": [-20.0, -40.0],   # vista que abarca Chile y Europa
-        "zoom": 3,
-        "markers": [
-            {"name": "Gran Valparaíso, Chile — urban greening study",
-             "coords": [-33.05, -71.45], "group": "papers"},
-            {"name": "Petorca / Papudo, Chile — drought & phenology",
-             "coords": [-32.30, -71.00], "group": "papers"},
-            {"name": "Central Chile — hyper-droughts",
-             "coords": [-34.50, -70.80], "group": "papers"},
-            {"name": "Chilean Patagonia — field campaign",
-             "coords": [-46.50, -72.30], "group": "field"},
-            {"name": "Wageningen, Netherlands — MSc Geo-information Science",
-             "coords": [51.985, 5.665], "group": "wageningen"},
-        ],
-    },
+    # Vista inicial del mapa (antes de empezar a hacer scroll):
+    "map": {"center": [-20.0, -25.0], "zoom": 3},
 
-    # --- Pestañas ---
-    "tabs": [
-        # ===================== 1) TRABAJOS DE PAPER =====================
+    "steps": [
+        # ======================= PAPERS (Chile) =======================
         {
-            "id": "papers",
-            "label": "Paper work",
-            "intro": "Selected figures and key results from my peer-reviewed "
-                     "publications on drought, vegetation and land change in Chile.",
-            "items": [
-                {
-                    "title": "Shrub microsites &amp; prolonged drought in "
-                             "semiarid ecosystems",
-                    "tag": "Journal of Arid Environments · 2026",
-                    "images": ["assets/img/papers/aridenv_drought.png"],
-                    "summary": "Comparison of vegetation greenness (NDVI), shrub "
-                               "cover and annual precipitation across three "
-                               "semiarid sites (Papudo, Lampa, Rapel) between the "
-                               "pre-megadrought (2000–2009) and megadrought "
-                               "(2010–2023) periods.",
-                    "results": "Greenness and shrub cover declined significantly "
-                               "under the megadrought, yet soil nutrients "
-                               "accumulated within shrub microsites — revealing a "
-                               "decoupling of above- and below-ground responses.",
-                    "doi": "10.1016/j.jaridenv.2026.105660",
-                },
-                {
-                    "title": "Spatial inequality of urban greening in the Gran "
-                             "Valparaíso",
-                    "tag": "Urban Forestry &amp; Urban Greening · 2025",
-                    "images": [
-                        "assets/img/papers/greening_studyarea.png",
-                        "assets/img/papers/greening_anomaly.png",
-                        "assets/img/papers/greening_timeseries.png",
-                    ],
-                    "summary": "Mapping of public, peri-urban and urban green "
-                               "areas across the Gran Valparaíso conurbation and "
-                               "their NDVI anomalies before and during the "
-                               "Central Chile megadrought (2010–2023).",
-                    "results": "Urban greening loss was spatially unequal: "
-                               "peri-urban and public green spaces deteriorated "
-                               "most, exposing environmental inequality between "
-                               "neighbourhoods.",
-                    "doi": "10.1016/j.ufug.2025.129080",
-                },
-                {
-                    "title": "Hyper-droughts in central Chile: drivers, impacts "
-                             "&amp; projections",
-                    "tag": "Hydrology &amp; Earth System Sciences · 2025",
-                    "images": [
-                        "assets/img/papers/hyperdrought_sst.png",
-                        "assets/img/papers/hyperdrought_hydro.png",
-                        "assets/img/papers/hyperdrought_ndvi.png",
-                    ],
-                    "summary": "Characterisation of central Chile's hyper-droughts "
-                               "linking ocean–atmosphere drivers (SST &amp; "
-                               "sea-level pressure) to precipitation, river "
-                               "discharge, snowpack and vegetation responses "
-                               "(Landsat NDVI) over more than a century.",
-                    "results": "Recent droughts are unprecedented in the "
-                               "instrumental record, with compounding deficits in "
-                               "rainfall, streamflow and snow water equivalent and "
-                               "lasting impacts on natural and irrigated vegetation.",
-                    "doi": "10.5194/hess-29-5347-2025",
-                },
+            "group": "papers",
+            "tag": "Journal of Arid Environments · 2026",
+            "title": "Shrub microsites &amp; prolonged drought in semiarid "
+                     "ecosystems",
+            "center": [-32.50, -71.00],
+            "zoom": 7,
+            "images": ["assets/img/papers/aridenv_drought.png"],
+            "summary": "Vegetation greenness (NDVI), shrub cover and annual "
+                       "precipitation across three semiarid sites (Papudo, Lampa, "
+                       "Rapel) compared between the pre-megadrought (2000–2009) "
+                       "and megadrought (2010–2023) periods.",
+            "results": "Greenness and shrub cover declined significantly under the "
+                       "megadrought, yet soil nutrients accumulated within shrub "
+                       "microsites — a decoupling of above- and below-ground "
+                       "responses.",
+            "doi": "10.1016/j.jaridenv.2026.105660",
+        },
+        {
+            "group": "papers",
+            "tag": "Urban Forestry &amp; Urban Greening · 2025",
+            "title": "Spatial inequality of urban greening in the Gran Valparaíso",
+            "center": [-33.05, -71.45],
+            "zoom": 9,
+            "images": [
+                "assets/img/papers/greening_studyarea.png",
+                "assets/img/papers/greening_anomaly.png",
+                "assets/img/papers/greening_timeseries.png",
             ],
+            "summary": "Mapping of public, peri-urban and urban green areas across "
+                       "the Gran Valparaíso conurbation and their NDVI anomalies "
+                       "before and during the Central Chile megadrought.",
+            "results": "Urban greening loss was spatially unequal: peri-urban and "
+                       "public green spaces deteriorated most, exposing "
+                       "environmental inequality between neighbourhoods.",
+            "doi": "10.1016/j.ufug.2025.129080",
+        },
+        {
+            "group": "papers",
+            "tag": "Hydrology &amp; Earth System Sciences · 2025",
+            "title": "Hyper-droughts in central Chile: drivers, impacts &amp; "
+                     "projections",
+            "center": [-34.50, -70.80],
+            "zoom": 6,
+            "images": [
+                "assets/img/papers/hyperdrought_sst.png",
+                "assets/img/papers/hyperdrought_hydro.png",
+                "assets/img/papers/hyperdrought_ndvi.png",
+            ],
+            "summary": "Central Chile's hyper-droughts linked to ocean–atmosphere "
+                       "drivers (SST &amp; sea-level pressure), and their effects "
+                       "on precipitation, river discharge, snowpack and vegetation "
+                       "(Landsat NDVI) over more than a century.",
+            "results": "Recent droughts are unprecedented in the instrumental "
+                       "record, with compounding deficits in rainfall, streamflow "
+                       "and snow water equivalent, and lasting vegetation impacts.",
+            "doi": "10.5194/hess-29-5347-2025",
         },
 
-        # ===================== 2) TRABAJO DE CAMPO =====================
+        # ======================= FIELD WORK =======================
         {
-            "id": "field",
-            "label": "Field work",
-            "intro": "UAV surveys, ground-truthing and field campaigns — from "
-                     "central Chile to Patagonia. (Upload your photos to "
-                     "assets/img/field/ and link them below.)",
-            "items": [
-                {
-                    "title": "UAV multispectral survey (demo)",
-                    "tag": "Drone · DJI M300 RTK",
-                    "images": [],   # ej: ["assets/img/field/drone_survey.jpg"]
-                    "summary": "High-resolution multispectral flights to validate "
-                               "satellite drought signals on the ground.",
-                    "results": "Placeholder — add your photos and a short note "
-                               "about the campaign.",
-                    "doi": "",
-                },
-                {
-                    "title": "Patagonia field campaign (demo)",
-                    "tag": "Fieldwork · Aysén, Chile",
-                    "images": [],   # ej: ["assets/img/field/patagonia.jpg"]
-                    "summary": "Ground data collection and landscape survey in "
-                               "Chilean Patagonia.",
-                    "results": "Placeholder — add your photos and a short note "
-                               "about the campaign.",
-                    "doi": "",
-                },
-            ],
+            "group": "field",
+            "tag": "Drone · DJI M300 RTK",
+            "title": "UAV multispectral survey (demo)",
+            "center": [-32.78, -71.22],
+            "zoom": 9,
+            "images": [],   # ej: ["assets/img/field/drone_survey.jpg"]
+            "summary": "High-resolution multispectral flights to validate "
+                       "satellite drought signals on the ground in central Chile.",
+            "results": "Placeholder — upload your photos to assets/img/field/ and "
+                       "add a short note about the campaign.",
+            "doi": "",
+        },
+        {
+            "group": "field",
+            "tag": "Fieldwork · Aysén, Chile",
+            "title": "Patagonia field campaign (demo)",
+            "center": [-46.50, -72.30],
+            "zoom": 7,
+            "images": [],   # ej: ["assets/img/field/patagonia.jpg"]
+            "summary": "Ground data collection and landscape survey in Chilean "
+                       "Patagonia.",
+            "results": "Placeholder — upload your photos to assets/img/field/ and "
+                       "add a short note about the campaign.",
+            "doi": "",
         },
 
-        # ================= 3) PROYECTOS WAGENINGEN (MGI) =================
+        # ===================== WAGENINGEN (MGI) =====================
+        # Orden: Advanced Earth Observation -> Machine Learning ->
+        #        Deep Learning -> Extended Realities
         {
-            "id": "wageningen",
-            "label": "Wageningen projects",
-            "intro": "Products from my MSc Geo-information Science courses — "
-                     "advanced earth observation, machine learning and deep "
-                     "learning. (Add your course outputs to "
-                     "assets/img/wageningen/.)",
-            "items": [
-                {
-                    "title": "Deep learning for object detection (demo)",
-                    "tag": "AIN31306 · Deep Learning",
-                    "images": [],
-                    "summary": "CNN / transformer models for detecting and "
-                               "segmenting objects in aerial imagery.",
-                    "results": "Placeholder — add your project figure and a short "
-                               "description of the method and outcome.",
-                    "doi": "",
-                },
-                {
-                    "title": "Advanced earth observation (demo)",
-                    "tag": "GRS32306 · Advanced Earth Observation",
-                    "images": [],
-                    "summary": "Point-cloud processing and time-series analysis of "
-                               "multi-sensor satellite data.",
-                    "results": "Placeholder — add your project figure and a short "
-                               "description of the method and outcome.",
-                    "doi": "",
-                },
-            ],
+            "group": "wageningen",
+            "tag": "GRS32306 · Advanced Earth Observation",
+            "title": "Advanced Earth Observation (demo)",
+            "center": [51.985, 5.665],
+            "zoom": 8,
+            "images": [],   # ej: ["assets/img/wageningen/aeo_project.png"]
+            "summary": "Point-cloud processing and time-series analysis of "
+                       "multi-sensor satellite and LiDAR data.",
+            "results": "Placeholder — add your course figure to "
+                       "assets/img/wageningen/ and a short description.",
+            "doi": "",
+        },
+        {
+            "group": "wageningen",
+            "tag": "FTE35306 · Machine Learning",
+            "title": "Machine Learning (demo)",
+            "center": [51.985, 5.665],
+            "zoom": 8,
+            "images": [],   # ej: ["assets/img/wageningen/ml_project.png"]
+            "summary": "Supervised and unsupervised machine-learning models for "
+                       "classification and regression on remote sensing data.",
+            "results": "Placeholder — add your course figure to "
+                       "assets/img/wageningen/ and a short description.",
+            "doi": "",
+        },
+        {
+            "group": "wageningen",
+            "tag": "AIN31306 · Deep Learning",
+            "title": "Deep Learning (demo)",
+            "center": [51.985, 5.665],
+            "zoom": 8,
+            "images": [],   # ej: ["assets/img/wageningen/dl_project.png"]
+            "summary": "CNNs, YOLO, R-CNN, DETR and Vision Transformers for object "
+                       "detection and segmentation on aerial imagery.",
+            "results": "Placeholder — add your course figure to "
+                       "assets/img/wageningen/ and a short description.",
+            "doi": "",
+        },
+        {
+            "group": "wageningen",
+            "tag": "MSc course · Extended Realities",
+            "title": "Extended Realities — the future of communication (demo)",
+            "center": [51.985, 5.665],
+            "zoom": 8,
+            "images": [],   # ej: ["assets/img/wageningen/xr_project.png"]
+            "summary": "Augmented and virtual reality and immersive 3D "
+                       "geovisualization explored as the future of spatial "
+                       "communication.",
+            "results": "Placeholder — add your course figure to "
+                       "assets/img/wageningen/ and a short description.",
+            "doi": "",
         },
     ],
 }
 
 # -----------------------------------------------------------------------------
-# 8. VISUALIZACIONES / PRODUCTOS
-#    'charts' = gráficos Plotly interactivos generados con datos ficticios
-#    (edita los datos en assets/js/main.js si quieres cambiar las cifras).
-#    'gallery' = tarjetas para tus productos reales. Cuando subas tu carpeta de
-#    visualizaciones, apunta 'src' al archivo (imagen, .html de mapa, etc.).
-# -----------------------------------------------------------------------------
-VISUALS = {
-    "heading": "Data products &amp; visualizations",
-    "intro": "Selected outputs from my research and from the MSc Geo-information "
-             "Science programme at Wageningen. The charts below are interactive "
-             "demos; the gallery will host real products soon.",
-    "gallery": [
-        {
-            "title": "NDVI anomaly map (demo)",
-            "tag": "Remote sensing",
-            "caption": "Vegetation greenness anomaly during a drought year. "
-                       "Placeholder — replace with your real raster export.",
-            "src": "",   # ej: "visualizations/ndvi_anomaly.png"
-        },
-        {
-            "title": "Land-cover classification (demo)",
-            "tag": "Machine learning",
-            "caption": "Supervised LULC classification of a study basin. "
-                       "Placeholder — replace with your real map.",
-            "src": "",   # ej: "visualizations/lulc_2020.png"
-        },
-        {
-            "title": "Point-cloud / DSM (demo)",
-            "tag": "UAV · LiDAR",
-            "caption": "Digital surface model derived from UAV photogrammetry. "
-                       "Placeholder — replace with your real product.",
-            "src": "",   # ej: "visualizations/dsm_hillshade.png"
-        },
-    ],
-}
-
-# -----------------------------------------------------------------------------
-# 9. PUBLICACIONES CIENTÍFICAS
-#    Para añadir una nueva, copia un bloque { ... } y rellena los campos.
-#    'doi' se convierte automáticamente en enlace https://doi.org/...
-# -----------------------------------------------------------------------------
-PUBLICATIONS = [
-    {
-        "year": "2026",
-        "title": "Above and belowground responses to prolonged drought: shrub "
-                 "microsites accumulate soil nutrients while vegetation "
-                 "greenness declines in semiarid ecosystems",
-        "authors": "Henríquez-Gangas F., Carvallo G.O., <strong>Castro G.</strong>, "
-                   "Díaz F.P.",
-        "venue": "Journal of Arid Environments, 236, 105660",
-        "doi": "10.1016/j.jaridenv.2026.105660",
-    },
-    {
-        "year": "2025",
-        "title": "Spatial inequality of urban greening dynamics in the Gran "
-                 "Valparaíso during the Central Chile megadrought (2010–2023)",
-        "authors": "De La Barra V., Chávez R.O., <strong>Castro G.</strong>, "
-                   "Sarricolea P.",
-        "venue": "Urban Forestry &amp; Urban Greening",
-        "doi": "10.1016/j.ufug.2025.129080",
-    },
-    {
-        "year": "2025",
-        "title": "Hyper droughts in central Chile: drivers, impacts, and "
-                 "projections",
-        "authors": "Garreaud R., Boisier J.P., Alvarez-Garreton C., Christie D.A., "
-                   "Carrasco-Escaff T., Vergara I., Chávez R.O., et al.",
-        "venue": "Hydrology and Earth System Sciences (HESS)",
-        "doi": "10.5194/hess-29-5347-2025",
-    },
-]
-
-# -----------------------------------------------------------------------------
-# 10. PRESENTACIONES EN CONGRESOS
-# -----------------------------------------------------------------------------
-CONFERENCES = [
-    {
-        "year": "2024",
-        "title": "Evaluation of the effects of drought on vegetation in central "
-                 "Chile using Landsat satellite images and high spatial "
-                 "resolution multispectral images",
-        "event": "XXX Annual Meeting of the Ecological Society of Chile, "
-                 "La Serena — poster.",
-    },
-    {
-        "year": "2023",
-        "title": "Decadal changes in land use in six basins of central Chile "
-                 "between 2000 and 2020 using Landsat images",
-        "event": "SICyR International Symposium, Viña del Mar — poster.",
-    },
-    {
-        "year": "2022",
-        "title": "Spatio-temporal evaluation of irrigation patterns in "
-                 "agricultural areas of the Petorca river basin from MODIS EVI "
-                 "images and hydro-climate records",
-        "event": "LXV Annual Meeting of the Society of Biology of Chile, "
-                 "Pucón — poster.",
-    },
-]
-
-# -----------------------------------------------------------------------------
-# 11. CONTACTO Y ENLACES
-#     Pon "" en cualquier enlace que no quieras mostrar y desaparecerá.
+# 8. CONTACTO Y ENLACES
+#    Pon "" en cualquier enlace que no quieras mostrar y desaparecerá.
 # -----------------------------------------------------------------------------
 CONTACT = {
     "heading": "Let's connect",
@@ -465,7 +370,7 @@ CONTACT = {
 }
 
 # -----------------------------------------------------------------------------
-# 12. PIE DE PÁGINA
+# 9. PIE DE PÁGINA
 # -----------------------------------------------------------------------------
 FOOTER = {
     "text": "Built with Python &amp; Leaflet · © 2026 Gabriel Castro B.",

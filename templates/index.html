@@ -44,9 +44,7 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
-      <a href="#work">Field</a>
-      <a href="#visuals">Products</a>
-      <a href="#publications">Publications</a>
+      <a href="#work">Work</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="nav__toggle" aria-label="Menu">☰</button>
@@ -136,139 +134,46 @@
     </div>
   </section>
 
-  <!-- ======================= WORK & FIELD (3 pestañas + mapa Esri) ======================= -->
-  <section class="section" id="work">
-    <div class="section__head reveal">
-      <span class="section__kicker">04 — Work &amp; field</span>
-      <h2>{{ work.heading | safe }}</h2>
-      <p class="section__intro">{{ work.intro | safe }}</p>
+  <!-- ======================= WORK & FIELD — SCROLLYTELLING DE MAPA ======================= -->
+  <section class="story" id="work">
+    <!-- Mapa fijo (base física de Esri) que permanece mientras se hace scroll -->
+    <div class="story__sticky">
+      <div id="work-map"></div>
+      <div class="story__overlay">
+        <span class="section__kicker">04 — Work &amp; field</span>
+        <h2>{{ work.heading | safe }}</h2>
+      </div>
     </div>
 
-    <!-- Mapa interactivo con base física de Esri -->
-    <div id="work-map" class="reveal"></div>
-
-    <!-- Botones de pestañas -->
-    <div class="tabs reveal">
-      {% for tab in work.tabs %}
-      <button class="tab-btn{% if loop.first %} is-active{% endif %}" data-tab="{{ tab.id }}">
-        {{ tab.label }}
-      </button>
-      {% endfor %}
-    </div>
-
-    <!-- Paneles de pestañas -->
-    {% for tab in work.tabs %}
-    <div class="tab-panel{% if loop.first %} is-active{% endif %}" id="tab-{{ tab.id }}">
-      <p class="tab-panel__intro">{{ tab.intro | safe }}</p>
-      <div class="work-grid">
-        {% for it in tab['items'] %}
-        <article class="work-card reveal">
-          {% if it.images %}
-          <div class="work-card__media{% if it.images|length > 1 %} work-card__media--multi{% endif %}">
-            {% for img in it.images %}
-            <a href="{{ img }}" target="_blank" rel="noopener" class="work-card__imglink">
-              <img src="{{ img }}" alt="{{ it.title | safe }}" loading="lazy" />
+    <!-- Paneles que activan cada paso al hacer scroll -->
+    <div class="story__steps">
+      <div class="story__intro">
+        <p>{{ work.intro | safe }}</p>
+      </div>
+      {% for st in work.steps %}
+      <div class="story-step" data-index="{{ loop.index0 }}"
+           data-lat="{{ st.center[0] }}" data-lon="{{ st.center[1] }}"
+           data-zoom="{{ st.zoom }}" data-group="{{ st.group }}">
+        <article class="story-card story-card--{{ st.group }}">
+          <span class="story-card__tag">{{ st.tag | safe }}</span>
+          <h3>{{ st.title | safe }}</h3>
+          {% if st.images %}
+          <div class="story-card__figs">
+            {% for img in st.images %}
+            <a href="{{ img }}" target="_blank" rel="noopener">
+              <img src="{{ img }}" alt="{{ st.title | safe }}" loading="lazy" />
             </a>
             {% endfor %}
           </div>
           {% else %}
-          <div class="work-card__placeholder">
-            <span>{{ it.tag | safe }}</span><small>Image coming soon</small>
-          </div>
+          <div class="story-card__placeholder"><small>Figure coming soon</small></div>
           {% endif %}
-          <div class="work-card__body">
-            <span class="work-card__tag">{{ it.tag | safe }}</span>
-            <h3>{{ it.title | safe }}</h3>
-            <p class="work-card__summary">{{ it.summary | safe }}</p>
-            <p class="work-card__results"><strong>Key result —</strong> {{ it.results | safe }}</p>
-            {% if it.doi %}
-            <a class="pub__doi" href="https://doi.org/{{ it.doi }}" target="_blank" rel="noopener">DOI: {{ it.doi }} ↗</a>
-            {% endif %}
-          </div>
+          <p class="story-card__summary">{{ st.summary | safe }}</p>
+          <p class="story-card__results"><strong>Key result —</strong> {{ st.results | safe }}</p>
+          {% if st.doi %}
+          <a class="pub__doi" href="https://doi.org/{{ st.doi }}" target="_blank" rel="noopener">DOI: {{ st.doi }} ↗</a>
+          {% endif %}
         </article>
-        {% endfor %}
-      </div>
-    </div>
-    {% endfor %}
-  </section>
-
-  <!-- ======================= VISUALS / PRODUCTS ======================= -->
-  <section class="section section--alt" id="visuals">
-    <div class="section__head reveal">
-      <span class="section__kicker">05 — Outputs</span>
-      <h2>{{ visuals.heading | safe }}</h2>
-      <p class="section__intro">{{ visuals.intro | safe }}</p>
-    </div>
-
-    <!-- Gráficos interactivos (Plotly, datos demo en assets/js/main.js) -->
-    <div class="charts reveal">
-      <div class="chart-box">
-        <h3>Vegetation greenness (NDVI) — demo time series</h3>
-        <div id="chart-ndvi" class="plot"></div>
-      </div>
-      <div class="chart-box">
-        <h3>Land-cover change 2000 → 2020 — demo</h3>
-        <div id="chart-lulc" class="plot"></div>
-      </div>
-    </div>
-
-    <!-- Galería de productos (placeholders editables en content.py) -->
-    <div class="gallery">
-      {% for g in visuals.gallery %}
-      <figure class="gallery__item reveal">
-        <div class="gallery__media">
-          {% if g.src %}
-          <img src="{{ g.src }}" alt="{{ g.title | safe }}" loading="lazy" />
-          {% else %}
-          <div class="gallery__placeholder">
-            <span>{{ g.tag }}</span>
-            <small>Preview coming soon</small>
-          </div>
-          {% endif %}
-        </div>
-        <figcaption>
-          <strong>{{ g.title | safe }}</strong>
-          <span class="gallery__tag">{{ g.tag }}</span>
-          <p>{{ g.caption | safe }}</p>
-        </figcaption>
-      </figure>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- ======================= PUBLICATIONS ======================= -->
-  <section class="section" id="publications">
-    <div class="section__head reveal">
-      <span class="section__kicker">06 — Research output</span>
-      <h2>Scientific publications</h2>
-    </div>
-    <div class="pubs">
-      {% for p in publications %}
-      <article class="pub reveal">
-        <span class="pub__year">{{ p.year }}</span>
-        <div class="pub__body">
-          <h3>{{ p.title | safe }}</h3>
-          <p class="pub__authors">{{ p.authors | safe }}</p>
-          <p class="pub__venue">{{ p.venue | safe }}</p>
-          {% if p.doi %}
-          <a class="pub__doi" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">
-            DOI: {{ p.doi }} ↗
-          </a>
-          {% endif %}
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-
-    <h3 class="subhead reveal">Conference presentations</h3>
-    <div class="confs">
-      {% for c in conferences %}
-      <div class="conf reveal">
-        <span class="conf__year">{{ c.year }}</span>
-        <div>
-          <p class="conf__title">{{ c.title | safe }}</p>
-          <p class="conf__event">{{ c.event | safe }}</p>
-        </div>
       </div>
       {% endfor %}
     </div>
@@ -277,7 +182,7 @@
   <!-- ======================= CONTACT ======================= -->
   <section class="section section--alt" id="contact">
     <div class="section__head reveal">
-      <span class="section__kicker">07 — Contact</span>
+      <span class="section__kicker">05 — Contact</span>
       <h2>{{ contact.heading | safe }}</h2>
       <p class="section__intro">{{ contact.blurb | safe }}</p>
     </div>

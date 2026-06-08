@@ -51,9 +51,6 @@ def build():
         education=content.EDUCATION,
         experience=content.EXPERIENCE,
         work=content.WORK,
-        visuals=content.VISUALS,
-        publications=content.PUBLICATIONS,
-        conferences=content.CONFERENCES,
         contact=content.CONTACT,
         footer=content.FOOTER,
     )
