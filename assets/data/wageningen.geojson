@@ -1,0 +1,52 @@
+{
+"type": "FeatureCollection",
+"_comment": "DATOS FICTICIOS: Wageningen demo.",
+"features": [
+{
+"type": "Feature",
+"properties": {
+"name": "Wageningen University & Research"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [
+5.6646,
+51.9847
+]
+}
+},
+{
+"type": "Feature",
+"properties": {
+"name": "Study area (demo)"
+},
+"geometry": {
+"type": "Polygon",
+"coordinates": [
+[
+[
+5.63,
+51.97
+],
+[
+5.7,
+51.97
+],
+[
+5.71,
+52.0
+],
+[
+5.64,
+52.01
+],
+[
+5.63,
+51.97
+]
+]
+]
+}
+}
+]
+}

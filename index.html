@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  Esta página se GENERA automáticamente desde templates/index.html + content.py
+  NO edites el index.html de la raíz a mano: edita content.py y la plantilla,
+  luego ejecuta  python build.py
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Castro B. · Geo-information Scientist</title>
+  <meta name="description" content="Geographer &amp; remote sensing researcher — MSc Geo-information Science at Wageningen University &amp; Research." />
+  <meta name="author" content="Gabriel Castro B." />
+
+  <!-- Open Graph (vista previa al compartir el enlace) -->
+  <meta property="og:title" content="Gabriel Castro B. · Geo-information Scientist" />
+  <meta property="og:description" content="Geographer &amp; remote sensing researcher — MSc Geo-information Science at Wageningen University &amp; Research." />
+  <meta property="og:url" content="https://gabrielcastrob.github.io" />
+  <meta property="og:type" content="website" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet (mapas interactivos) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Plotly (gráficos interactivos) -->
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" charset="utf-8"></script>
+
+  <!-- Estilos del sitio -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">GC<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Field</a>
+      <a href="#visuals">Products</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__toggle" aria-label="Menu">☰</button>
+  </header>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero" id="top"
+>
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero__grid"></div>
+    <div class="hero__inner">
+      <p class="hero__role">Geographer · Remote Sensing Researcher</p>
+      <h1 class="hero__name">Gabriel Castro B.</h1>
+      <p class="hero__subtitle">MSc Geo-information Science — Wageningen University &amp; Research</p>
+      <p class="hero__tagline">Turning satellite, UAV and LiDAR data into insight about how landscapes change — from the drylands of Chile to the polders of the Netherlands.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#work">Explore my work</a>
+        <a class="btn btn--ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <a class="hero__scroll" href="#about" aria-label="Scroll down">⌄</a>
+  </section>
+
+  <!-- ======================= ABOUT ======================= -->
+  <section class="section" id="about">
+    <div class="section__head reveal">
+      <span class="section__kicker">01 — Profile</span>
+      <h2>About me</h2>
+    </div>
+    <div class="about">
+      <div class="about__text reveal">
+        <p class="about__lead">Geographer with 3+ years of research experience in land-surface phenology, land-use / land-cover change and climate analysis using optical remote sensing, UAV multispectral imagery and GIS across Chilean ecosystems. I am currently pursuing an MSc in Geo-information Science at Wageningen University &amp; Research, focusing on machine learning and deep learning methods for remote sensing applications.</p>
+        <p>I am driven by applying machine learning and deep learning to real-world problems in the remote sensing domain — object detection, segmentation and classification of aerial and satellite imagery — and by communicating technical results clearly to specialist and non-specialist audiences alike.</p>
+      </div>
+      <div class="about__stats reveal">
+        <div class="stat">
+          <span class="stat__value" data-count="3+">3+</span>
+          <span class="stat__label">Years of research</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" data-count="3">3</span>
+          <span class="stat__label">Peer-reviewed papers</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" data-count="4">4</span>
+          <span class="stat__label">ANID-funded projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" data-count="100+">100+</span>
+          <span class="stat__label">UAV flight hours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SKILLS ======================= -->
+  <section class="section section--alt" id="skills">
+    <div class="section__head reveal">
+      <span class="section__kicker">02 — Toolbox</span>
+      <h2>Skills &amp; competences</h2>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card__icon icon--satellite"></div>
+        <h3>Remote Sensing</h3>
+        <ul>
+<li>Sentinel-1 / 2</li><li>Landsat</li><li>MODIS</li><li>UAV multispectral</li><li>LiDAR / point clouds</li>        </ul>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon icon--code"></div>
+        <h3>Software &amp; Programming</h3>
+        <ul>
+<li>Python (PyTorch, scikit-learn, pandas)</li><li>R</li><li>Google Earth Engine (JS)</li><li>ArcGIS Pro</li><li>QGIS</li><li>CloudCompare</li><li>Pix4D</li><li>Agisoft Metashape</li>        </ul>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon icon--brain"></div>
+        <h3>Deep Learning</h3>
+        <ul>
+<li>CNNs</li><li>YOLO</li><li>R-CNN</li><li>DETR</li><li>Vision Transformers (ViT)</li>        </ul>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon icon--drone"></div>
+        <h3>UAV Operations</h3>
+        <ul>
+<li>Certified drone pilot (Chile)</li><li>DJI M300 RTK</li><li>DJI Mini 4 Pro</li><li>Mavic 2 Pro</li><li>100+ flight hours</li>        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================= EXPERIENCE + EDUCATION ======================= -->
+  <section class="section" id="experience">
+    <div class="section__head reveal">
+      <span class="section__kicker">03 — Trajectory</span>
+      <h2>Experience &amp; education</h2>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline">
+        <h3 class="timeline__title">Research &amp; teaching</h3>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2023 – 2025</span>
+          <span class="tl-tag tl-tag--research">research</span>
+          <h4>Research Assistant — FONDECYT Nº1201527</h4>
+          <p class="tl-item__org">ANID, Chile · PI: Roberto O. Chávez</p>
+          <p class="tl-item__detail">A spatiotemporal assessment of major disturbances on Chilean vegetation phenology, productivity and resilience using 40 years of continuous remote sensing records.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2023 – 2025</span>
+          <span class="tl-tag tl-tag--research">research</span>
+          <h4>Research Assistant — FONDEF IDEA ID:23I10058</h4>
+          <p class="tl-item__org">ANID, Chile · PI: S. Fingerhuth &amp; I. Kopaitic</p>
+          <p class="tl-item__detail">Light pollution — validation of aerial methods for the quantification and identification of pollution sources.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2022 – 2023</span>
+          <span class="tl-tag tl-tag--research">research</span>
+          <h4>Research Assistant — FONDECYT N°1201714</h4>
+          <p class="tl-item__org">ANID, Chile · PI: Ariel N. Muñoz</p>
+          <p class="tl-item__detail">Assessing historical changes of water extreme events and their impacts on vegetation, water access and infrastructure planning in Mediterranean and semi-arid basins of Chile.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2022 – 2024</span>
+          <span class="tl-tag tl-tag--teaching">teaching</span>
+          <h4>Lecturer &amp; Training Instructor</h4>
+          <p class="tl-item__org">PUCV — Institute of Geography</p>
+          <p class="tl-item__detail">Remote Sensing (GEO1053-1), GIS II (GEO1045-1), Diploma in Geoinformation &amp; RS (120 h), Introduction to GIS &amp; Spatial Analysis (30 h).</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2018 – 2021</span>
+          <span class="tl-tag tl-tag--teaching">teaching</span>
+          <h4>Teaching Assistant</h4>
+          <p class="tl-item__org">PUCV — Institute of Geography</p>
+          <p class="tl-item__detail">Remote Sensing, GIS II, Geomorphology II, Physical Geography.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <h3 class="timeline__title">Education</h3>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2025 – 2027</span>
+          <h4>MSc Geo-information Science</h4>
+          <p class="tl-item__org">Wageningen University &amp; Research, Netherlands</p>
+          <p class="tl-item__detail">Advanced Earth Observation (GRS32306), Machine Learning (FTE35306), Deep Learning (AIN31306).</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2024</span>
+          <h4>Diploma in Data Science</h4>
+          <p class="tl-item__org">Universidad de Santiago, Chile</p>
+          <p class="tl-item__detail">Python, statistics, machine learning and advanced ML methods.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-item__period">2017 – 2021</span>
+          <h4>Bachelor in Geography</h4>
+          <p class="tl-item__org">Pontifical Catholic University of Valparaíso, Chile</p>
+          <p class="tl-item__detail">Remote sensing, GIS I–III, spatial analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MAP SCROLLYTELLING ======================= -->
+  <section class="story" id="work">
+    <div class="story__sticky">
+      <div id="story-map"></div>
+      <div class="story__overlay">
+        <span class="section__kicker">04 — In the field</span>
+        <h2>Research in the field</h2>
+      </div>
+    </div>
+    <div class="story__steps">
+      <div class="story__intro">
+        <p>A guided tour through the landscapes behind my work. Scroll to move across study sites — these layers are placeholder demos and will be replaced with real products soon.</p>
+      </div>
+      <div class="story-step" data-index="0">
+        <div class="story-step__card">
+          <span class="story-step__num">01</span>
+          <h3>Central Chile — the megadrought</h3>
+          <p>Since 2010, central Chile has endured an uninterrupted megadrought. I mapped vegetation greenness and urban greening dynamics across the Gran Valparaíso conurbation.</p>
+        </div>
+      </div>
+      <div class="story-step" data-index="1">
+        <div class="story-step__card">
+          <span class="story-step__num">02</span>
+          <h3>Petorca river basin — irrigation patterns</h3>
+          <p>Using MODIS EVI time series and hydro-climate records I evaluated the spatio-temporal evolution of irrigation in agricultural areas of the Petorca basin.</p>
+        </div>
+      </div>
+      <div class="story-step" data-index="2">
+        <div class="story-step__card">
+          <span class="story-step__num">03</span>
+          <h3>UAV multispectral campaigns</h3>
+          <p>I flew DJI M300 RTK and Mavic platforms to capture high-resolution multispectral imagery, validating satellite drought signals on the ground.</p>
+        </div>
+      </div>
+      <div class="story-step" data-index="3">
+        <div class="story-step__card">
+          <span class="story-step__num">04</span>
+          <h3>Wageningen — a new chapter</h3>
+          <p>Now in the Netherlands, I apply deep learning to earth observation — from point-cloud processing to object detection on aerial imagery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= VISUALS / PRODUCTS ======================= -->
+  <section class="section section--alt" id="visuals">
+    <div class="section__head reveal">
+      <span class="section__kicker">05 — Outputs</span>
+      <h2>Data products &amp; visualizations</h2>
+      <p class="section__intro">Selected outputs from my research and from the MSc Geo-information Science programme at Wageningen. The charts below are interactive demos; the gallery will host real products soon.</p>
+    </div>
+
+    <!-- Gráficos interactivos (Plotly, datos demo en assets/js/main.js) -->
+    <div class="charts reveal">
+      <div class="chart-box">
+        <h3>Vegetation greenness (NDVI) — demo time series</h3>
+        <div id="chart-ndvi" class="plot"></div>
+      </div>
+      <div class="chart-box">
+        <h3>Land-cover change 2000 → 2020 — demo</h3>
+        <div id="chart-lulc" class="plot"></div>
+      </div>
+    </div>
+
+    <!-- Galería de productos (placeholders editables en content.py) -->
+    <div class="gallery">
+      <figure class="gallery__item reveal">
+        <div class="gallery__media">
+          <div class="gallery__placeholder">
+            <span>Remote sensing</span>
+            <small>Preview coming soon</small>
+          </div>
+        </div>
+        <figcaption>
+          <strong>NDVI anomaly map (demo)</strong>
+          <span class="gallery__tag">Remote sensing</span>
+          <p>Vegetation greenness anomaly during a drought year. Placeholder — replace with your real raster export.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <div class="gallery__media">
+          <div class="gallery__placeholder">
+            <span>Machine learning</span>
+            <small>Preview coming soon</small>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Land-cover classification (demo)</strong>
+          <span class="gallery__tag">Machine learning</span>
+          <p>Supervised LULC classification of a study basin. Placeholder — replace with your real map.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <div class="gallery__media">
+          <div class="gallery__placeholder">
+            <span>UAV · LiDAR</span>
+            <small>Preview coming soon</small>
+          </div>
+        </div>
+        <figcaption>
+          <strong>Point-cloud / DSM (demo)</strong>
+          <span class="gallery__tag">UAV · LiDAR</span>
+          <p>Digital surface model derived from UAV photogrammetry. Placeholder — replace with your real product.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ======================= PUBLICATIONS ======================= -->
+  <section class="section" id="publications">
+    <div class="section__head reveal">
+      <span class="section__kicker">06 — Research output</span>
+      <h2>Scientific publications</h2>
+    </div>
+    <div class="pubs">
+      <article class="pub reveal">
+        <span class="pub__year">2026</span>
+        <div class="pub__body">
+          <h3>Above and belowground responses to prolonged drought: shrub microsites accumulate soil nutrients while vegetation greenness declines in semiarid ecosystems</h3>
+          <p class="pub__authors">Henríquez-Gangas F., Carvallo G.O., <strong>Castro G.</strong>, Díaz F.P.</p>
+          <p class="pub__venue">Journal of Arid Environments, 236, 105660</p>
+          <a class="pub__doi" href="https://doi.org/10.1016/j.jaridenv.2026.105660" target="_blank" rel="noopener">
+            DOI: 10.1016/j.jaridenv.2026.105660 ↗
+          </a>
+        </div>
+      </article>
+      <article class="pub reveal">
+        <span class="pub__year">2025</span>
+        <div class="pub__body">
+          <h3>Spatial inequality of urban greening dynamics in the Gran Valparaíso during the Central Chile megadrought (2010–2023)</h3>
+          <p class="pub__authors">De La Barra V., Chávez R.O., <strong>Castro G.</strong>, Sarricolea P.</p>
+          <p class="pub__venue">Urban Forestry &amp; Urban Greening</p>
+          <a class="pub__doi" href="https://doi.org/10.1016/j.ufug.2025.129080" target="_blank" rel="noopener">
+            DOI: 10.1016/j.ufug.2025.129080 ↗
+          </a>
+        </div>
+      </article>
+      <article class="pub reveal">
+        <span class="pub__year">2025</span>
+        <div class="pub__body">
+          <h3>Hyper droughts in central Chile: drivers, impacts, and projections</h3>
+          <p class="pub__authors">Garreaud R., Boisier J.P., Alvarez-Garreton C., Christie D.A., Carrasco-Escaff T., Vergara I., Chávez R.O., et al.</p>
+          <p class="pub__venue">Hydrology and Earth System Sciences (HESS)</p>
+          <a class="pub__doi" href="https://doi.org/10.5194/hess-29-5347-2025" target="_blank" rel="noopener">
+            DOI: 10.5194/hess-29-5347-2025 ↗
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="subhead reveal">Conference presentations</h3>
+    <div class="confs">
+      <div class="conf reveal">
+        <span class="conf__year">2024</span>
+        <div>
+          <p class="conf__title">Evaluation of the effects of drought on vegetation in central Chile using Landsat satellite images and high spatial resolution multispectral images</p>
+          <p class="conf__event">XXX Annual Meeting of the Ecological Society of Chile, La Serena — poster.</p>
+        </div>
+      </div>
+      <div class="conf reveal">
+        <span class="conf__year">2023</span>
+        <div>
+          <p class="conf__title">Decadal changes in land use in six basins of central Chile between 2000 and 2020 using Landsat images</p>
+          <p class="conf__event">SICyR International Symposium, Viña del Mar — poster.</p>
+        </div>
+      </div>
+      <div class="conf reveal">
+        <span class="conf__year">2022</span>
+        <div>
+          <p class="conf__title">Spatio-temporal evaluation of irrigation patterns in agricultural areas of the Petorca river basin from MODIS EVI images and hydro-climate records</p>
+          <p class="conf__event">LXV Annual Meeting of the Society of Biology of Chile, Pucón — poster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT ======================= -->
+  <section class="section section--alt" id="contact">
+    <div class="section__head reveal">
+      <span class="section__kicker">07 — Contact</span>
+      <h2>Let's connect</h2>
+      <p class="section__intro">Open to collaborations in remote sensing, geospatial machine learning and earth observation. Feel free to reach out.</p>
+    </div>
+    <div class="contact reveal">
+      <div class="contact__info">
+        <a class="contact__row" href="mailto:gabriel.castro@wur.nl">
+          <span class="contact__ico ico-mail"></span>gabriel.castro@wur.nl
+        </a>
+        <a class="contact__row" href="mailto:gabriel.castro.b@pucv.cl">
+          <span class="contact__ico ico-mail"></span>gabriel.castro.b@pucv.cl
+        </a>
+        <span class="contact__row"><span class="contact__ico ico-phone"></span>+31 6 26236610</span>
+        <span class="contact__row"><span class="contact__ico ico-pin"></span>Wageningen, Netherlands</span>
+      </div>
+      <div class="contact__links">
+          <a class="social" href="https://github.com/gabrielcastrob" target="_blank" rel="noopener">github</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <p>Built with Python &amp; Leaflet · © 2026 Gabriel Castro B.</p>
+  </footer>
+
+  <!-- Datos del scrollytelling pasados desde Python a JavaScript -->
+  <script id="map-story-data" type="application/json">[{"center": [-33.05, -71.4], "layer": "study_basins", "text": "Since 2010, central Chile has endured an uninterrupted megadrought. I mapped vegetation greenness and urban greening dynamics across the Gran Valpara\u00edso conurbation.", "title": "Central Chile \u2014 the megadrought", "zoom": 9}, {"center": [-32.25, -70.95], "layer": "ndvi_grid", "text": "Using MODIS EVI time series and hydro-climate records I evaluated the spatio-temporal evolution of irrigation in agricultural areas of the Petorca basin.", "title": "Petorca river basin \u2014 irrigation patterns", "zoom": 10}, {"center": [-32.78, -71.22], "layer": "flight_area", "text": "I flew DJI M300 RTK and Mavic platforms to capture high-resolution multispectral imagery, validating satellite drought signals on the ground.", "title": "UAV multispectral campaigns", "zoom": 13}, {"center": [51.985, 5.665], "layer": "wageningen", "text": "Now in the Netherlands, I apply deep learning to earth observation \u2014 from point-cloud processing to object detection on aerial imagery.", "title": "Wageningen \u2014 a new chapter", "zoom": 12}]</script>
+
+  <!-- Lógica del sitio: mapas, gráficos, scroll, animaciones -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

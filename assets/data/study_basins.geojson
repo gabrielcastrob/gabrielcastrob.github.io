@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "_comment": "DATOS FICTICIOS de demostracion. Reemplaza por tus cuencas reales (mismo nombre de archivo).",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Gran Valparaiso (demo)" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-71.65,-32.95],[-71.30,-32.95],[-71.25,-33.15],[-71.55,-33.25],[-71.70,-33.10],[-71.65,-32.95]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Aconcagua basin (demo)" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-71.40,-32.70],[-70.80,-32.75],[-70.70,-33.00],[-71.20,-33.05],[-71.45,-32.90],[-71.40,-32.70]]]
+      }
+    }
+  ]
+}

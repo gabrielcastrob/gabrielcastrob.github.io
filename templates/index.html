@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  Esta página se GENERA automáticamente desde templates/index.html + content.py
+  NO edites el index.html de la raíz a mano: edita content.py y la plantilla,
+  luego ejecuta  python build.py
+  ============================================================================
+-->
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}" />
+  <meta name="author" content="{{ site.author }}" />
+
+  <!-- Open Graph (vista previa al compartir el enlace) -->
+  <meta property="og:title" content="{{ site.title }}" />
+  <meta property="og:description" content="{{ site.description }}" />
+  <meta property="og:url" content="{{ site.url }}" />
+  <meta property="og:type" content="website" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet (mapas interactivos) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Plotly (gráficos interactivos) -->
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" charset="utf-8"></script>
+
+  <!-- Estilos del sitio -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">GC<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Field</a>
+      <a href="#visuals">Products</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__toggle" aria-label="Menu">☰</button>
+  </header>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero" id="top"
+           {% if hero.background_image %}style="--hero-img:url('{{ hero.background_image }}')"{% endif %}>
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero__grid"></div>
+    <div class="hero__inner">
+      <p class="hero__role">{{ hero.role }}</p>
+      <h1 class="hero__name">{{ hero.name }}</h1>
+      <p class="hero__subtitle">{{ hero.subtitle | safe }}</p>
+      <p class="hero__tagline">{{ hero.tagline | safe }}</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="{{ hero.cta_primary.href }}">{{ hero.cta_primary.label }}</a>
+        <a class="btn btn--ghost" href="{{ hero.cta_secondary.href }}">{{ hero.cta_secondary.label }}</a>
+      </div>
+    </div>
+    <a class="hero__scroll" href="#about" aria-label="Scroll down">⌄</a>
+  </section>
+
+  <!-- ======================= ABOUT ======================= -->
+  <section class="section" id="about">
+    <div class="section__head reveal">
+      <span class="section__kicker">01 — Profile</span>
+      <h2>{{ about.heading }}</h2>
+    </div>
+    <div class="about">
+      <div class="about__text reveal">
+        <p class="about__lead">{{ about.profile | safe }}</p>
+        <p>{{ about.interests | safe }}</p>
+      </div>
+      <div class="about__stats reveal">
+        {% for s in about.stats %}
+        <div class="stat">
+          <span class="stat__value" data-count="{{ s.value }}">{{ s.value }}</span>
+          <span class="stat__label">{{ s.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SKILLS ======================= -->
+  <section class="section section--alt" id="skills">
+    <div class="section__head reveal">
+      <span class="section__kicker">02 — Toolbox</span>
+      <h2>Skills &amp; competences</h2>
+    </div>
+    <div class="cards">
+      {% for c in skills %}
+      <article class="card reveal">
+        <div class="card__icon icon--{{ c.icon }}"></div>
+        <h3>{{ c.title | safe }}</h3>
+        <ul>
+          {% for it in c['items'] %}<li>{{ it | safe }}</li>{% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ======================= EXPERIENCE + EDUCATION ======================= -->
+  <section class="section" id="experience">
+    <div class="section__head reveal">
+      <span class="section__kicker">03 — Trajectory</span>
+      <h2>Experience &amp; education</h2>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline">
+        <h3 class="timeline__title">Research &amp; teaching</h3>
+        {% for e in experience %}
+        <div class="tl-item reveal">
+          <span class="tl-item__period">{{ e.period }}</span>
+          <span class="tl-tag tl-tag--{{ e.type }}">{{ e.type }}</span>
+          <h4>{{ e.title | safe }}</h4>
+          <p class="tl-item__org">{{ e.org | safe }}</p>
+          <p class="tl-item__detail">{{ e.detail | safe }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="timeline">
+        <h3 class="timeline__title">Education</h3>
+        {% for ed in education %}
+        <div class="tl-item reveal">
+          <span class="tl-item__period">{{ ed.period }}</span>
+          <h4>{{ ed.degree | safe }}</h4>
+          <p class="tl-item__org">{{ ed.place | safe }}</p>
+          <p class="tl-item__detail">{{ ed.detail | safe }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MAP SCROLLYTELLING ======================= -->
+  <section class="story" id="work">
+    <div class="story__sticky">
+      <div id="story-map"></div>
+      <div class="story__overlay">
+        <span class="section__kicker">04 — In the field</span>
+        <h2>{{ map_story.heading }}</h2>
+      </div>
+    </div>
+    <div class="story__steps">
+      <div class="story__intro">
+        <p>{{ map_story.intro | safe }}</p>
+      </div>
+      {% for st in map_story.steps %}
+      <div class="story-step" data-index="{{ loop.index0 }}">
+        <div class="story-step__card">
+          <span class="story-step__num">{{ "%02d"|format(loop.index) }}</span>
+          <h3>{{ st.title | safe }}</h3>
+          <p>{{ st.text | safe }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ======================= VISUALS / PRODUCTS ======================= -->
+  <section class="section section--alt" id="visuals">
+    <div class="section__head reveal">
+      <span class="section__kicker">05 — Outputs</span>
+      <h2>{{ visuals.heading | safe }}</h2>
+      <p class="section__intro">{{ visuals.intro | safe }}</p>
+    </div>
+
+    <!-- Gráficos interactivos (Plotly, datos demo en assets/js/main.js) -->
+    <div class="charts reveal">
+      <div class="chart-box">
+        <h3>Vegetation greenness (NDVI) — demo time series</h3>
+        <div id="chart-ndvi" class="plot"></div>
+      </div>
+      <div class="chart-box">
+        <h3>Land-cover change 2000 → 2020 — demo</h3>
+        <div id="chart-lulc" class="plot"></div>
+      </div>
+    </div>
+
+    <!-- Galería de productos (placeholders editables en content.py) -->
+    <div class="gallery">
+      {% for g in visuals.gallery %}
+      <figure class="gallery__item reveal">
+        <div class="gallery__media">
+          {% if g.src %}
+          <img src="{{ g.src }}" alt="{{ g.title | safe }}" loading="lazy" />
+          {% else %}
+          <div class="gallery__placeholder">
+            <span>{{ g.tag }}</span>
+            <small>Preview coming soon</small>
+          </div>
+          {% endif %}
+        </div>
+        <figcaption>
+          <strong>{{ g.title | safe }}</strong>
+          <span class="gallery__tag">{{ g.tag }}</span>
+          <p>{{ g.caption | safe }}</p>
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ======================= PUBLICATIONS ======================= -->
+  <section class="section" id="publications">
+    <div class="section__head reveal">
+      <span class="section__kicker">06 — Research output</span>
+      <h2>Scientific publications</h2>
+    </div>
+    <div class="pubs">
+      {% for p in publications %}
+      <article class="pub reveal">
+        <span class="pub__year">{{ p.year }}</span>
+        <div class="pub__body">
+          <h3>{{ p.title | safe }}</h3>
+          <p class="pub__authors">{{ p.authors | safe }}</p>
+          <p class="pub__venue">{{ p.venue | safe }}</p>
+          {% if p.doi %}
+          <a class="pub__doi" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">
+            DOI: {{ p.doi }} ↗
+          </a>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <h3 class="subhead reveal">Conference presentations</h3>
+    <div class="confs">
+      {% for c in conferences %}
+      <div class="conf reveal">
+        <span class="conf__year">{{ c.year }}</span>
+        <div>
+          <p class="conf__title">{{ c.title | safe }}</p>
+          <p class="conf__event">{{ c.event | safe }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT ======================= -->
+  <section class="section section--alt" id="contact">
+    <div class="section__head reveal">
+      <span class="section__kicker">07 — Contact</span>
+      <h2>{{ contact.heading | safe }}</h2>
+      <p class="section__intro">{{ contact.blurb | safe }}</p>
+    </div>
+    <div class="contact reveal">
+      <div class="contact__info">
+        <a class="contact__row" href="mailto:{{ contact.email_primary }}">
+          <span class="contact__ico ico-mail"></span>{{ contact.email_primary }}
+        </a>
+        {% if contact.email_secondary %}
+        <a class="contact__row" href="mailto:{{ contact.email_secondary }}">
+          <span class="contact__ico ico-mail"></span>{{ contact.email_secondary }}
+        </a>
+        {% endif %}
+        {% if contact.phone %}
+        <span class="contact__row"><span class="contact__ico ico-phone"></span>{{ contact.phone }}</span>
+        {% endif %}
+        <span class="contact__row"><span class="contact__ico ico-pin"></span>{{ contact.location }}</span>
+      </div>
+      <div class="contact__links">
+        {% for name, url in contact.links.items() %}
+          {% if url %}
+          <a class="social" href="{{ url }}" target="_blank" rel="noopener">{{ name | replace('_', ' ') }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <p>{{ footer.text | safe }}</p>
+  </footer>
+
+  <!-- Datos del scrollytelling pasados desde Python a JavaScript -->
+  <script id="map-story-data" type="application/json">{{ map_story.steps | tojson }}</script>
+
+  <!-- Lógica del sitio: mapas, gráficos, scroll, animaciones -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

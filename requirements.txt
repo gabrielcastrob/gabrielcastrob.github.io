@@ -1,0 +1,3 @@
+# Dependencias de Python para construir el sitio.
+# Instala con:  pip install -r requirements.txt
+Jinja2>=3.1

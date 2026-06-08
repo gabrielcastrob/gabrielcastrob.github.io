@@ -1,0 +1,78 @@
+{
+"type": "FeatureCollection",
+"_comment": "DATOS FICTICIOS: area de vuelo UAV demo.",
+"features": [
+{
+"type": "Feature",
+"properties": {
+"name": "UAV survey area (demo)"
+},
+"geometry": {
+"type": "Polygon",
+"coordinates": [
+[
+[
+-71.245,
+-32.795
+],
+[
+-71.205,
+-32.795
+],
+[
+-71.205,
+-32.765
+],
+[
+-71.245,
+-32.765
+],
+[
+-71.245,
+-32.795
+]
+]
+]
+}
+},
+{
+"type": "Feature",
+"properties": {
+"name": "Take-off point"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [
+-71.225,
+-32.78
+]
+}
+},
+{
+"type": "Feature",
+"properties": {
+"name": "GCP 1"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [
+-71.24,
+-32.792
+]
+}
+},
+{
+"type": "Feature",
+"properties": {
+"name": "GCP 2"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [
+-71.21,
+-32.768
+]
+}
+}
+]
+}
