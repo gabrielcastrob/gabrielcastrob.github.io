@@ -166,6 +166,11 @@
               <source src="{{ media }}" />
               Your browser does not support the video tag.
             </video>
+            {% elif media.lower().endswith('.pdf') %}
+            <a class="story-card__doc" href="{{ media }}" target="_blank" rel="noopener">
+              <span class="story-card__doc-ico"></span>
+              <span>View document (PDF) ↗</span>
+            </a>
             {% else %}
             <a href="{{ media }}" target="_blank" rel="noopener">
               <img src="{{ media }}" alt="{{ st.title | safe }}" loading="lazy" />

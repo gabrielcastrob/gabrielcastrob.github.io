@@ -134,13 +134,26 @@ function initWorkMap() {
     attributionControl: true,
   });
 
-  // ---- Base física de Esri (relieve) ----
+  // ---- Base satelital de Esri (imágenes de alta resolución) ----
   L.tileLayer(
-    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     {
-      attribution: "Tiles &copy; Esri — Source: US National Park Service",
-      maxZoom: 13,
-      maxNativeZoom: 8,   // el servicio físico llega a z8; Leaflet sobre-amplía
+      attribution:
+        "Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics, " +
+        "and the GIS User Community",
+      maxZoom: 19,
+      maxNativeZoom: 18,
+    }
+  ).addTo(map);
+
+  // ---- Capa de etiquetas (lugares y límites) para mantener legibilidad ----
+  L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution: "Labels &copy; Esri",
+      maxZoom: 19,
+      maxNativeZoom: 18,
+      pane: "overlayPane",
     }
   ).addTo(map);
 

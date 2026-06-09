@@ -268,28 +268,21 @@ WORK = {
         # ======================= FIELD WORK =======================
         {
             "group": "field",
-            "tag": "Drone · DJI M300 RTK",
-            "title": "UAV multispectral survey (demo)",
-            "center": [-32.78, -71.22],
-            "zoom": 9,
-            "images": [],   # ej: ["assets/img/field/drone_survey.jpg"]
-            "summary": "High-resolution multispectral flights to validate "
-                       "satellite drought signals on the ground in central Chile.",
-            "results": "Placeholder — upload your photos to assets/img/field/ and "
-                       "add a short note about the campaign.",
-            "doi": "",
-        },
-        {
-            "group": "field",
             "tag": "Fieldwork · Aysén, Chile",
-            "title": "Patagonia field campaign (demo)",
+            "title": "Patagonia field campaign",
             "center": [-46.50, -72.30],
             "zoom": 7,
-            "images": [],   # ej: ["assets/img/field/patagonia.jpg"]
-            "summary": "Ground data collection and landscape survey in Chilean "
-                       "Patagonia.",
-            "results": "Placeholder — upload your photos to assets/img/field/ and "
-                       "add a short note about the campaign.",
+            "images": [
+                "assets/img/field/patagonia_bosque1.jpg",
+                "assets/img/field/patagonia_bosque2.jpg",
+                "assets/img/video/patagonia_dron.mp4",
+            ],
+            "summary": "Ground data collection and landscape survey in the native "
+                       "forests of Chilean Patagonia (Aysén), combining field "
+                       "photography with UAV aerial footage of the canopy.",
+            "results": "Documented forest structure and condition on the ground, "
+                       "with drone imagery providing a complementary low-altitude "
+                       "view to link field observations with remote sensing.",
             "doi": "",
         },
 
@@ -299,54 +292,76 @@ WORK = {
         {
             "group": "wageningen",
             "tag": "GRS32306 · Advanced Earth Observation",
-            "title": "Advanced Earth Observation (demo)",
+            "title": "Advanced Earth Observation",
             "center": [51.985, 5.665],
             "zoom": 8,
-            "images": [],   # ej: ["assets/img/wageningen/aeo_project.png"]
-            "summary": "Point-cloud processing and time-series analysis of "
-                       "multi-sensor satellite and LiDAR data.",
-            "results": "Placeholder — add your course figure to "
-                       "assets/img/wageningen/ and a short description.",
+            "images": [
+                "assets/img/wageningen/aeo_paper.png",
+            ],
+            "summary": "Scientific-paper-style project analysing land-surface "
+                       "dynamics from dense multi-sensor satellite time series. "
+                       "The work combined optical observations to detect and "
+                       "characterise vegetation change, framed and written up as a "
+                       "short research article.",
+            "results": "Produced a reproducible time-series workflow and a "
+                       "paper-format figure summarising the observed land-surface "
+                       "trends.",
             "doi": "",
         },
         {
             "group": "wageningen",
             "tag": "FTE35306 · Machine Learning",
-            "title": "Machine Learning (demo)",
+            "title": "Machine Learning — classification challenge",
             "center": [51.985, 5.665],
             "zoom": 8,
-            "images": [],   # ej: ["assets/img/wageningen/ml_project.png"]
-            "summary": "Supervised and unsupervised machine-learning models for "
-                       "classification and regression on remote sensing data.",
-            "results": "Placeholder — add your course figure to "
-                       "assets/img/wageningen/ and a short description.",
+            "images": [
+                "assets/img/wageningen/ml_map.png",
+                "assets/img/wageningen/ml_charts.png",
+            ],
+            "summary": "Supervised land-cover classification challenge (with "
+                       "N. Groenhart): feature engineering on a remote sensing "
+                       "dataset, comparison of several classifiers, and "
+                       "hyper-parameter tuning with cross-validation to maximise "
+                       "predictive performance.",
+            "results": "Delivered a tuned classification pipeline; the resulting "
+                       "thematic map and accuracy/feature-importance charts are "
+                       "shown above.",
             "doi": "",
         },
         {
             "group": "wageningen",
             "tag": "AIN31306 · Deep Learning",
-            "title": "Deep Learning (demo)",
+            "title": "Deep Learning — group project",
             "center": [51.985, 5.665],
             "zoom": 8,
-            "images": [],   # ej: ["assets/img/wageningen/dl_project.png"]
-            "summary": "CNNs, YOLO, R-CNN, DETR and Vision Transformers for object "
-                       "detection and segmentation on aerial imagery.",
-            "results": "Placeholder — add your course figure to "
-                       "assets/img/wageningen/ and a short description.",
+            "images": [
+                "assets/img/wageningen/dl_detection.png",
+                "assets/img/wageningen/dl_plot.png",
+            ],
+            "summary": "Group project (with Abel) applying deep neural networks "
+                       "to aerial imagery: building, training and evaluating a "
+                       "convolutional model for object detection / segmentation, "
+                       "including data preparation and monitoring of the training "
+                       "process.",
+            "results": "Trained and evaluated the model end-to-end; detection "
+                       "outputs and the training/validation curves are shown above.",
             "doi": "",
         },
         {
             "group": "wageningen",
             "tag": "MSc course · Extended Realities",
-            "title": "Extended Realities — the future of communication (demo)",
+            "title": "Extended Realities — the future of communication",
             "center": [51.985, 5.665],
             "zoom": 8,
-            "images": [],   # ej: ["assets/img/wageningen/xr_project.png"]
-            "summary": "Augmented and virtual reality and immersive 3D "
-                       "geovisualization explored as the future of spatial "
-                       "communication.",
-            "results": "Placeholder — add your course figure to "
-                       "assets/img/wageningen/ and a short description.",
+            "images": [
+                "assets/img/wageningen/xr_unity.png",
+            ],
+            "summary": "Group project building an immersive 3D geovisualization in "
+                       "Unity: a LiDAR point-cloud scene set up for interactive, "
+                       "first-person exploration, exploring augmented and virtual "
+                       "reality as the future of spatial communication.",
+            "results": "Delivered an interactive Unity application; the editor view "
+                       "of the LiDAR environment is shown above.",
             "doi": "",
         },
     ],

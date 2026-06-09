@@ -2,7 +2,7 @@
 
 Interactive personal portfolio (geospatial / remote sensing) built with **Python + Jinja2**
 and published on **GitHub Pages**. Clean light theme with an interactive **Leaflet map
-scrollytelling** section (Esri physical basemap) that flies to each project and unfolds
+scrollytelling** section (Esri satellite imagery basemap) that flies to each project and unfolds
 its figures over the map.
 
 🔗 **Live site:** https://gabrielcastrob.github.io/MGI_PortafolioVis/
