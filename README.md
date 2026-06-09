@@ -5,7 +5,7 @@ and published on **GitHub Pages**. Clean light theme with an interactive **Leafl
 scrollytelling** section (Esri satellite imagery basemap) that flies to each project and unfolds
 its figures over the map.
 
-🔗 **Live site:** https://gabrielcastrob.github.io/MGI_PortafolioVis/
+🔗 **Live site:** https://gabrielcastrob.github.io/
 
 > The live site only works after enabling GitHub Pages — see *Deployment* below.
 
@@ -17,7 +17,7 @@ The site is a **static site generator**: you edit one content file in Python and
 build script renders the final HTML.
 
 ```
-MGI_PortafolioVis/
+gabrielcastrob.github.io/
 ├── content.py          ← EDIT THIS: all text, projects, experience, etc.
 ├── build.py            ← run this to (re)generate the site
 ├── templates/
@@ -75,7 +75,7 @@ After **any** change to `content.py` or the template, run `python build.py` agai
 1. On GitHub: **Settings → Pages**.
 2. **Source:** *Deploy from a branch* · **Branch:** `main` · **Folder:** `/ (root)` · **Save**.
 3. After ~1 minute the site is live at:
-   **https://gabrielcastrob.github.io/MGI_PortafolioVis/**
+   **https://gabrielcastrob.github.io/**
 
 To update the site afterwards, just rebuild and push:
 

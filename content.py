@@ -21,7 +21,7 @@ SITE = {
                    "Science at Wageningen University & Research.",
     "author": "Gabriel Castro B.",
     # URL final del sitio (GitHub Pages, repo de proyecto):
-    "url": "https://gabrielcastrob.github.io/MGI_PortafolioVis/",
+    "url": "https://gabrielcastrob.github.io/",
     "lang": "en",
 }
 
