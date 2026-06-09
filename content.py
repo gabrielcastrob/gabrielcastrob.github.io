@@ -315,7 +315,7 @@ WORK = {
             "center": [51.985, 5.665],
             "zoom": 8,
             "images": [
-                "assets/img/wageningen/ml_map.png",
+                "assets/img/wageningen/ml_map.jpg",
                 "assets/img/wageningen/ml_charts.png",
             ],
             "summary": "Supervised land-cover classification challenge (with "
@@ -335,7 +335,7 @@ WORK = {
             "center": [51.985, 5.665],
             "zoom": 8,
             "images": [
-                "assets/img/wageningen/dl_detection.png",
+                "assets/img/wageningen/dl_detection.jpg",
                 "assets/img/wageningen/dl_plot.png",
             ],
             "summary": "Group project (with Abel) applying deep neural networks "
@@ -354,7 +354,7 @@ WORK = {
             "center": [51.985, 5.665],
             "zoom": 8,
             "images": [
-                "assets/img/wageningen/xr_unity.png",
+                "assets/img/wageningen/xr_unity.jpg",
             ],
             "summary": "Group project building an immersive 3D geovisualization in "
                        "Unity: a LiDAR point-cloud scene set up for interactive, "
