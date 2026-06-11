@@ -51,19 +51,28 @@
   </header>
 
   <!-- ======================= HERO ======================= -->
-  <section class="hero" id="top"
+  <section class="hero hero--video" id="top"
 >
-    <canvas id="hero-canvas"></canvas>
+    <video class="hero__video" autoplay muted loop playsinline preload="auto"
+poster="assets/img/video/hero_poster.jpg">
+      <source src="assets/img/video/hero_patagonia.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__scrim"></div>
     <div class="hero__grid"></div>
     <div class="hero__inner">
-      <p class="hero__role">Geographer · Remote Sensing Researcher</p>
-      <h1 class="hero__name">Gabriel Castro B.</h1>
-      <p class="hero__subtitle">MSc Geo-information Science — Wageningen University &amp; Research</p>
-      <p class="hero__tagline">Turning satellite, UAV and LiDAR data into insight about how landscapes change — from the drylands of Chile to the polders of the Netherlands.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#work">Explore my work</a>
-        <a class="btn btn--ghost" href="#contact">Get in touch</a>
+      <div class="hero__text">
+        <p class="hero__role">Geographer · Remote Sensing Researcher</p>
+        <h1 class="hero__name">Gabriel Castro B.</h1>
+        <p class="hero__subtitle">MSc Geo-information Science — Wageningen University &amp; Research</p>
+        <p class="hero__tagline">Turning satellite, UAV and LiDAR data into insight about how landscapes change — from the drylands of Chile to the polders of the Netherlands.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#work">Explore my work</a>
+          <a class="btn btn--ghost" href="#contact">Get in touch</a>
+        </div>
       </div>
+      <figure class="hero__photo">
+        <img src="assets/img/portrait.jpg" alt="Gabriel Castro B. — fieldwork in Patagonia" loading="eager" />
+      </figure>
     </div>
     <a class="hero__scroll" href="#about" aria-label="Scroll down">⌄</a>
   </section>
@@ -100,12 +109,6 @@
         <h3>Software &amp; Programming</h3>
         <ul>
 <li>Python (PyTorch, scikit-learn, pandas)</li><li>R</li><li>Google Earth Engine (JS)</li><li>ArcGIS Pro</li><li>QGIS</li><li>CloudCompare</li><li>Pix4D</li><li>Agisoft Metashape</li>        </ul>
-      </article>
-      <article class="card reveal">
-        <div class="card__icon icon--brain"></div>
-        <h3>Deep Learning</h3>
-        <ul>
-<li>CNNs</li><li>YOLO</li><li>R-CNN</li><li>DETR</li><li>Vision Transformers (ViT)</li>        </ul>
       </article>
       <article class="card reveal">
         <div class="card__icon icon--drone"></div>
@@ -202,8 +205,8 @@
         <p>Scroll to travel across the sites behind my work — peer-reviewed research in Chile, UAV field campaigns, and MSc projects at Wageningen. Each stop reveals its figures over the map.</p>
       </div>
       <div class="story-step" data-index="0"
-           data-lat="-32.5" data-lon="-71.0"
-           data-zoom="7" data-group="papers">
+           data-lat="-29.95" data-lon="-71.25"
+           data-zoom="9" data-group="papers">
         <article class="story-card story-card--papers">
           <span class="story-card__tag">Journal of Arid Environments · 2026</span>
           <h3>Shrub microsites &amp; prolonged drought in semiarid ecosystems</h3>

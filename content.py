@@ -41,6 +41,13 @@ HERO = {
     # Imagen de fondo del hero (déjala vacía "" para usar el fondo animado por defecto).
     # Más adelante puedes poner: "assets/img/hero.jpg"
     "background_image": "",
+    # Video de fondo del hero (se reproduce en bucle, silenciado, al abrir la página).
+    # Déjalo vacío "" para volver al fondo animado por defecto.
+    "background_video": "assets/img/video/hero_patagonia.mp4",
+    # Imagen "poster" que se muestra mientras carga el video.
+    "background_poster": "assets/img/video/hero_poster.jpg",
+    # Tu foto, mostrada en el hero (déjala vacía "" para ocultarla).
+    "portrait": "assets/img/portrait.jpg",
 }
 
 # -----------------------------------------------------------------------------
@@ -81,11 +88,6 @@ SKILLS = [
         "items": ["Python (PyTorch, scikit-learn, pandas)", "R",
                   "Google Earth Engine (JS)", "ArcGIS Pro", "QGIS",
                   "CloudCompare", "Pix4D", "Agisoft Metashape"],
-    },
-    {
-        "icon": "brain",
-        "title": "Deep Learning",
-        "items": ["CNNs", "YOLO", "R-CNN", "DETR", "Vision Transformers (ViT)"],
     },
     {
         "icon": "drone",
@@ -211,8 +213,8 @@ WORK = {
             "tag": "Journal of Arid Environments · 2026",
             "title": "Shrub microsites &amp; prolonged drought in semiarid "
                      "ecosystems",
-            "center": [-32.50, -71.00],
-            "zoom": 7,
+            "center": [-29.95, -71.25],
+            "zoom": 9,
             "images": ["assets/img/papers/aridenv_drought.png"],
             "summary": "Vegetation greenness (NDVI), shrub cover and annual "
                        "precipitation across three semiarid sites (Papudo, Lampa, "

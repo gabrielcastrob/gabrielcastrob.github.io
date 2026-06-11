@@ -51,19 +51,34 @@
   </header>
 
   <!-- ======================= HERO ======================= -->
-  <section class="hero" id="top"
+  <section class="hero{% if hero.background_video %} hero--video{% endif %}" id="top"
            {% if hero.background_image %}style="--hero-img:url('{{ hero.background_image }}')"{% endif %}>
+    {% if hero.background_video %}
+    <video class="hero__video" autoplay muted loop playsinline preload="auto"
+           {% if hero.background_poster %}poster="{{ hero.background_poster }}"{% endif %}>
+      <source src="{{ hero.background_video }}" type="video/mp4" />
+    </video>
+    <div class="hero__scrim"></div>
+    {% else %}
     <canvas id="hero-canvas"></canvas>
+    {% endif %}
     <div class="hero__grid"></div>
     <div class="hero__inner">
-      <p class="hero__role">{{ hero.role }}</p>
-      <h1 class="hero__name">{{ hero.name }}</h1>
-      <p class="hero__subtitle">{{ hero.subtitle | safe }}</p>
-      <p class="hero__tagline">{{ hero.tagline | safe }}</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="{{ hero.cta_primary.href }}">{{ hero.cta_primary.label }}</a>
-        <a class="btn btn--ghost" href="{{ hero.cta_secondary.href }}">{{ hero.cta_secondary.label }}</a>
+      <div class="hero__text">
+        <p class="hero__role">{{ hero.role }}</p>
+        <h1 class="hero__name">{{ hero.name }}</h1>
+        <p class="hero__subtitle">{{ hero.subtitle | safe }}</p>
+        <p class="hero__tagline">{{ hero.tagline | safe }}</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="{{ hero.cta_primary.href }}">{{ hero.cta_primary.label }}</a>
+          <a class="btn btn--ghost" href="{{ hero.cta_secondary.href }}">{{ hero.cta_secondary.label }}</a>
+        </div>
       </div>
+      {% if hero.portrait %}
+      <figure class="hero__photo">
+        <img src="{{ hero.portrait }}" alt="{{ hero.name }} — fieldwork in Patagonia" loading="eager" />
+      </figure>
+      {% endif %}
     </div>
     <a class="hero__scroll" href="#about" aria-label="Scroll down">⌄</a>
   </section>
