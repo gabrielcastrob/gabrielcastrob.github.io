@@ -32,11 +32,8 @@ HERO = {
     "name": "Gabriel Castro B.",
     "role": "Geographer · Remote Sensing Researcher",
     "subtitle": "MSc Geo-information Science — Wageningen University &amp; Research",
-    "tagline": "3+ years of research experience mapping drought, vegetation "
-               "phenology and land-use change across Chilean ecosystems with "
-               "satellite and UAV data — now specialising in machine learning "
-               "and deep learning for object detection, segmentation and "
-               "classification of aerial imagery.",
+    # Frase corta bajo el subtítulo (déjala vacía "" para ocultarla).
+    "tagline": "",
     # Botones de llamada a la acción del hero:
     "cta_primary": {"label": "Explore my work", "href": "#work"},
     "cta_secondary": {"label": "Get in touch", "href": "#contact"},

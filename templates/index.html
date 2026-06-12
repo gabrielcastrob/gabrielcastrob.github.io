@@ -68,7 +68,9 @@
         <p class="hero__role">{{ hero.role }}</p>
         <h1 class="hero__name">{{ hero.name }}</h1>
         <p class="hero__subtitle">{{ hero.subtitle | safe }}</p>
+        {% if hero.tagline %}
         <p class="hero__tagline">{{ hero.tagline | safe }}</p>
+        {% endif %}
         <div class="hero__cta">
           <a class="btn btn--primary" href="{{ hero.cta_primary.href }}">{{ hero.cta_primary.label }}</a>
           <a class="btn btn--ghost" href="{{ hero.cta_secondary.href }}">{{ hero.cta_secondary.label }}</a>
