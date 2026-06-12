@@ -47,7 +47,7 @@ HERO = {
     # Imagen "poster" que se muestra mientras carga el video.
     "background_poster": "assets/img/video/hero_poster.jpg",
     # Tu foto, mostrada en el hero (déjala vacía "" para ocultarla).
-    "portrait": "assets/img/portrait.jpg",
+    "portrait": "",
 }
 
 # -----------------------------------------------------------------------------
@@ -63,13 +63,8 @@ ABOUT = {
         "Science at Wageningen University &amp; Research, focusing on machine "
         "learning and deep learning methods for remote sensing applications."
     ),
-    "interests": (
-        "I am driven by applying machine learning and deep learning to "
-        "real-world problems in the remote sensing domain — object detection, "
-        "segmentation and classification of aerial and satellite imagery — and "
-        "by communicating technical results clearly to specialist and "
-        "non-specialist audiences alike."
-    ),
+    # Tu foto, mostrada junto al texto (déjala vacía "" para ocultarla).
+    "portrait": "assets/img/portrait.jpg",
 }
 
 # -----------------------------------------------------------------------------
@@ -193,6 +188,8 @@ EXPERIENCE = [
 #     summary  -> resumen breve
 #     results  -> resultado/hallazgo principal
 #     doi      -> (opcional) DOI; se convierte en enlace
+#     links    -> (opcional) lista de enlaces extra, p. ej. repositorio o PDF:
+#                 [{"label": "Code on GitHub", "href": "https://github.com/..."}]
 #
 #  Para añadir un proyecto: copia un bloque { ... } y rellénalo.
 #  Para cambiar el mapa base, edita la URL del tileLayer en assets/js/main.js.
@@ -320,8 +317,8 @@ WORK = {
                 "assets/img/wageningen/ml_map.jpg",
                 "assets/img/wageningen/ml_charts.png",
             ],
-            "summary": "Supervised land-cover classification challenge (with "
-                       "N. Groenhart): feature engineering on a remote sensing "
+            "summary": "Team project — supervised land-cover classification "
+                       "challenge: feature engineering on a remote sensing "
                        "dataset, comparison of several classifiers, and "
                        "hyper-parameter tuning with cross-validation to maximise "
                        "predictive performance.",
@@ -329,6 +326,10 @@ WORK = {
                        "thematic map and accuracy/feature-importance charts are "
                        "shown above.",
             "doi": "",
+            "links": [
+                {"label": "Project report (PDF)",
+                 "href": "assets/docs/ml_classification_challenge.pdf"},
+            ],
         },
         {
             "group": "wageningen",
@@ -340,7 +341,7 @@ WORK = {
                 "assets/img/wageningen/dl_detection.jpg",
                 "assets/img/wageningen/dl_plot.png",
             ],
-            "summary": "Group project (with Abel) applying deep neural networks "
+            "summary": "Team project applying deep neural networks "
                        "to aerial imagery: building, training and evaluating a "
                        "convolutional model for object detection / segmentation, "
                        "including data preparation and monitoring of the training "
@@ -348,6 +349,12 @@ WORK = {
             "results": "Trained and evaluated the model end-to-end; detection "
                        "outputs and the training/validation curves are shown above.",
             "doi": "",
+            "links": [
+                {"label": "Code on GitHub",
+                 "href": "https://github.com/gabrielcastrob/Deep_learning_WUR"},
+                {"label": "Project report (PDF)",
+                 "href": "assets/docs/dl_group_project.pdf"},
+            ],
         },
         {
             "group": "wageningen",
@@ -357,13 +364,15 @@ WORK = {
             "zoom": 8,
             "images": [
                 "assets/img/wageningen/xr_unity.jpg",
+                "assets/img/video/xr_lidar_unity.mp4",
             ],
             "summary": "Group project building an immersive 3D geovisualization in "
                        "Unity: a LiDAR point-cloud scene set up for interactive, "
                        "first-person exploration, exploring augmented and virtual "
                        "reality as the future of spatial communication.",
             "results": "Delivered an interactive Unity application; the editor view "
-                       "of the LiDAR environment is shown above.",
+                       "and a walkthrough video of the LiDAR environment are shown "
+                       "above.",
             "doi": "",
         },
     ],

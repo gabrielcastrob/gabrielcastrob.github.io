@@ -70,9 +70,6 @@ poster="assets/img/video/hero_poster.jpg">
           <a class="btn btn--ghost" href="#contact">Get in touch</a>
         </div>
       </div>
-      <figure class="hero__photo">
-        <img src="assets/img/portrait.jpg" alt="Gabriel Castro B. — fieldwork in Patagonia" loading="eager" />
-      </figure>
     </div>
     <a class="hero__scroll" href="#about" aria-label="Scroll down">⌄</a>
   </section>
@@ -83,10 +80,12 @@ poster="assets/img/video/hero_poster.jpg">
       <span class="section__kicker">01 — Profile</span>
       <h2>About me</h2>
     </div>
-    <div class="about about--single">
+    <div class="about about--photo">
+      <figure class="about__photo reveal">
+        <img src="assets/img/portrait.jpg" alt="Gabriel Castro B." loading="lazy" />
+      </figure>
       <div class="about__text reveal">
         <p class="about__lead">Geographer with 3+ years of research experience in land-surface phenology, land-use / land-cover change and climate analysis using optical remote sensing, UAV multispectral imagery and GIS across Chilean ecosystems. I am currently pursuing an MSc in Geo-information Science at Wageningen University &amp; Research, focusing on machine learning and deep learning methods for remote sensing applications.</p>
-        <p>I am driven by applying machine learning and deep learning to real-world problems in the remote sensing domain — object detection, segmentation and classification of aerial and satellite imagery — and by communicating technical results clearly to specialist and non-specialist audiences alike.</p>
       </div>
     </div>
   </section>
@@ -316,8 +315,11 @@ poster="assets/img/video/hero_poster.jpg">
               <img src="assets/img/wageningen/ml_charts.png" alt="Machine Learning — classification challenge" loading="lazy" />
             </a>
           </div>
-          <p class="story-card__summary">Supervised land-cover classification challenge (with N. Groenhart): feature engineering on a remote sensing dataset, comparison of several classifiers, and hyper-parameter tuning with cross-validation to maximise predictive performance.</p>
+          <p class="story-card__summary">Team project — supervised land-cover classification challenge: feature engineering on a remote sensing dataset, comparison of several classifiers, and hyper-parameter tuning with cross-validation to maximise predictive performance.</p>
           <p class="story-card__results"><strong>Key result —</strong> Delivered a tuned classification pipeline; the resulting thematic map and accuracy/feature-importance charts are shown above.</p>
+          <div class="story-card__links">
+            <a class="pub__doi" href="assets/docs/ml_classification_challenge.pdf" target="_blank" rel="noopener">Project report (PDF) ↗</a>
+          </div>
         </article>
       </div>
       <div class="story-step" data-index="6"
@@ -334,8 +336,12 @@ poster="assets/img/video/hero_poster.jpg">
               <img src="assets/img/wageningen/dl_plot.png" alt="Deep Learning — group project" loading="lazy" />
             </a>
           </div>
-          <p class="story-card__summary">Group project (with Abel) applying deep neural networks to aerial imagery: building, training and evaluating a convolutional model for object detection / segmentation, including data preparation and monitoring of the training process.</p>
+          <p class="story-card__summary">Team project applying deep neural networks to aerial imagery: building, training and evaluating a convolutional model for object detection / segmentation, including data preparation and monitoring of the training process.</p>
           <p class="story-card__results"><strong>Key result —</strong> Trained and evaluated the model end-to-end; detection outputs and the training/validation curves are shown above.</p>
+          <div class="story-card__links">
+            <a class="pub__doi" href="https://github.com/gabrielcastrob/Deep_learning_WUR" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            <a class="pub__doi" href="assets/docs/dl_group_project.pdf" target="_blank" rel="noopener">Project report (PDF) ↗</a>
+          </div>
         </article>
       </div>
       <div class="story-step" data-index="7"
@@ -348,9 +354,14 @@ poster="assets/img/video/hero_poster.jpg">
             <a href="assets/img/wageningen/xr_unity.jpg" target="_blank" rel="noopener">
               <img src="assets/img/wageningen/xr_unity.jpg" alt="Extended Realities — the future of communication" loading="lazy" />
             </a>
+            <video class="story-card__video" controls preload="metadata" playsinline
+>
+              <source src="assets/img/video/xr_lidar_unity.mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
           <p class="story-card__summary">Group project building an immersive 3D geovisualization in Unity: a LiDAR point-cloud scene set up for interactive, first-person exploration, exploring augmented and virtual reality as the future of spatial communication.</p>
-          <p class="story-card__results"><strong>Key result —</strong> Delivered an interactive Unity application; the editor view of the LiDAR environment is shown above.</p>
+          <p class="story-card__results"><strong>Key result —</strong> Delivered an interactive Unity application; the editor view and a walkthrough video of the LiDAR environment are shown above.</p>
         </article>
       </div>
     </div>

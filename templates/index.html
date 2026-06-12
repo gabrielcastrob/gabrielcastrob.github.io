@@ -89,10 +89,14 @@
       <span class="section__kicker">01 — Profile</span>
       <h2>{{ about.heading }}</h2>
     </div>
-    <div class="about about--single">
+    <div class="about{% if about.portrait %} about--photo{% else %} about--single{% endif %}">
+      {% if about.portrait %}
+      <figure class="about__photo reveal">
+        <img src="{{ about.portrait }}" alt="{{ site.author }}" loading="lazy" />
+      </figure>
+      {% endif %}
       <div class="about__text reveal">
         <p class="about__lead">{{ about.profile | safe }}</p>
-        <p>{{ about.interests | safe }}</p>
       </div>
     </div>
   </section>
@@ -200,6 +204,13 @@
           <p class="story-card__results"><strong>Key result —</strong> {{ st.results | safe }}</p>
           {% if st.doi %}
           <a class="pub__doi" href="https://doi.org/{{ st.doi }}" target="_blank" rel="noopener">DOI: {{ st.doi }} ↗</a>
+          {% endif %}
+          {% if st.links %}
+          <div class="story-card__links">
+            {% for ln in st.links %}
+            <a class="pub__doi" href="{{ ln.href }}" target="_blank" rel="noopener">{{ ln.label | safe }} ↗</a>
+            {% endfor %}
+          </div>
           {% endif %}
         </article>
       </div>
