@@ -59,8 +59,7 @@ ABOUT = {
         "phenology, land-use / land-cover change and climate analysis using "
         "optical remote sensing, UAV multispectral imagery and GIS across "
         "Chilean ecosystems. MSc student in Geo-information Science at "
-        "Wageningen University &amp; Research. Co-author of four peer-reviewed "
-        "papers and former university lecturer in remote sensing and GIS."
+        "Wageningen University &amp; Research."
     ),
     # Tu foto, mostrada junto al texto (déjala vacía "" para ocultarla).
     "portrait": "assets/img/portrait.jpg",
