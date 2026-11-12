@@ -58,9 +58,9 @@ ABOUT = {
         "Geographer with 3+ years of research experience in land-surface "
         "phenology, land-use / land-cover change and climate analysis using "
         "optical remote sensing, UAV multispectral imagery and GIS across "
-        "Chilean ecosystems. I am currently pursuing an MSc in Geo-information "
-        "Science at Wageningen University &amp; Research, focusing on machine "
-        "learning and deep learning methods for remote sensing applications."
+        "Chilean ecosystems. MSc student in Geo-information Science at "
+        "Wageningen University &amp; Research. Co-author of four peer-reviewed "
+        "papers and former university lecturer in remote sensing and GIS."
     ),
     # Tu foto, mostrada junto al texto (déjala vacía "" para ocultarla).
     "portrait": "assets/img/portrait.jpg",
@@ -96,65 +96,90 @@ SKILLS = [
 # -----------------------------------------------------------------------------
 EDUCATION = [
     {
-        "period": "2025 – 2027",
+        "period": "09/2025 – present",
         "degree": "MSc Geo-information Science",
         "place": "Wageningen University &amp; Research, Netherlands",
         "detail": "Advanced Earth Observation (GRS32306), Machine Learning "
-                  "(FTE35306), Deep Learning (AIN31306).",
+                  "(FTE35306), Deep Learning (AIN31306), Extended Realities.",
     },
     {
         "period": "2024",
         "degree": "Diploma in Data Science",
-        "place": "Universidad de Santiago, Chile",
+        "place": "Universidad de Santiago de Chile",
         "detail": "Python, statistics, machine learning and advanced ML methods.",
     },
     {
         "period": "2017 – 2021",
         "degree": "Bachelor in Geography",
-        "place": "Pontifical Catholic University of Valparaíso, Chile",
+        "place": "Pontifical Catholic University of Valparaíso (PUCV), Chile",
         "detail": "Remote sensing, GIS I–III, spatial analysis.",
     },
 ]
 
 # -----------------------------------------------------------------------------
 # 6. EXPERIENCIA  (línea de tiempo: investigación + docencia)
-#    type = "research"  o  "teaching"  (sólo cambia el color de la etiqueta)
+#    type = "research", "teaching" o "professional"  (sólo cambia el color
+#    de la etiqueta)
 # -----------------------------------------------------------------------------
 EXPERIENCE = [
     {
         "type": "research",
+        "period": "2025",
+        "title": "Research Assistant — FONDECYT Nº1251184",
+        "org": "ANID, Chile · PUCV · PI: Roberto O. Chávez",
+        "detail": "Spatio-temporal variation of Blooming Desert biodiversity "
+                  "through multispectral remote sensing: new evidence for its "
+                  "territorial management and conservation.",
+    },
+    {
+        "type": "research",
         "period": "2023 – 2025",
         "title": "Research Assistant — FONDECYT Nº1201527",
-        "org": "ANID, Chile · PI: Roberto O. Chávez",
-        "detail": "A spatiotemporal assessment of major disturbances on Chilean "
+        "org": "ANID, Chile · PUCV · PI: Roberto O. Chávez",
+        "detail": "Spatiotemporal assessment of major disturbances on Chilean "
                   "vegetation phenology, productivity and resilience using 40 "
                   "years of continuous remote sensing records.",
     },
     {
         "type": "research",
         "period": "2023 – 2025",
+        "title": "Research Assistant — FONDECYT Initiation Nº11230835",
+        "org": "ANID, Chile · PUCV · PI: Francisca P. Díaz",
+        "detail": "Ecosystem spatiotemporal responses of Chilean drylands to "
+                  "increased aridity.",
+    },
+    {
+        "type": "research",
+        "period": "2023 – 2025",
         "title": "Research Assistant — FONDEF IDEA ID:23I10058",
-        "org": "ANID, Chile · PI: S. Fingerhuth &amp; I. Kopaitic",
+        "org": "ANID, Chile · PUCV · PIs: Sebastián Fingerhuth &amp; Iván Kopaitic",
         "detail": "Light pollution — validation of aerial methods for the "
-                  "quantification and identification of pollution sources.",
+                  "quantification and identification of light pollution sources.",
     },
     {
         "type": "research",
         "period": "2022 – 2023",
-        "title": "Research Assistant — FONDECYT N°1201714",
-        "org": "ANID, Chile · PI: Ariel N. Muñoz",
-        "detail": "Assessing historical changes of water extreme events and "
+        "title": "Research Assistant — FONDECYT Nº1201714",
+        "org": "ANID, Chile · PUCV · PI: Ariel N. Muñoz",
+        "detail": "Assessment of historical changes in extreme water events and "
                   "their impacts on vegetation, water access and infrastructure "
                   "planning in Mediterranean and semi-arid basins of Chile.",
+    },
+    {
+        "type": "professional",
+        "period": "2021",
+        "title": "Professional Intern — Monitoring of Protected Wilderness Areas",
+        "org": "CONAF — Chile's national forestry service",
+        "detail": "",
     },
     {
         "type": "teaching",
         "period": "2022 – 2024",
         "title": "Lecturer &amp; Training Instructor",
         "org": "PUCV — Institute of Geography",
-        "detail": "Remote Sensing (GEO1053-1), GIS II (GEO1045-1), Diploma in "
-                  "Geoinformation &amp; RS (120 h), Introduction to GIS &amp; "
-                  "Spatial Analysis (30 h).",
+        "detail": "Remote Sensing (GEO1053-1) and GIS II (GEO1045-1) university "
+                  "courses; Diploma in Geoinformation &amp; Remote Sensing "
+                  "(120 h) and Introduction to GIS &amp; Spatial Analysis (30 h).",
     },
     {
         "type": "teaching",
@@ -386,13 +411,13 @@ CONTACT = {
     "blurb": "Open to collaborations in remote sensing, geospatial machine "
              "learning and earth observation. Feel free to reach out.",
     "email_primary": "gabriel.castro@wur.nl",
-    "email_secondary": "gabriel.castro.b@pucv.cl",
+    "email_secondary": "",
     "phone": "+31 6 26236610",
     "location": "Wageningen, Netherlands",
     "links": {
         "github": "https://github.com/gabrielcastrob",
         "linkedin": "",          # ej: "https://linkedin.com/in/tu-perfil"
-        "orcid": "",             # ej: "https://orcid.org/0000-0000-0000-0000"
+        "orcid": "https://orcid.org/0009-0000-8389-0077",
         "google_scholar": "",    # ej: "https://scholar.google.com/citations?user=..."
         "researchgate": "",
     },

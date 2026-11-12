@@ -211,6 +211,7 @@ body:has(.hero--video) .nav:not(.scrolled) .nav__toggle { color: #ffffff; }
 .tl-tag { display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; padding: 2px 9px; border-radius: 999px; margin-left: 10px; vertical-align: 2px; }
 .tl-tag--research { background: rgba(13,148,136,.12); color: var(--accent); }
 .tl-tag--teaching { background: rgba(217,119,6,.14); color: var(--accent-3); }
+.tl-tag--professional { background: rgba(37,99,235,.12); color: var(--accent-2); }
 
 /* ------------- Sección WORK: scrollytelling de mapa (Esri físico) --------- */
 .story { position: relative; }

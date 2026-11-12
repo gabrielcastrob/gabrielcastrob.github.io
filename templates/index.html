@@ -137,7 +137,9 @@
           <span class="tl-tag tl-tag--{{ e.type }}">{{ e.type }}</span>
           <h4>{{ e.title | safe }}</h4>
           <p class="tl-item__org">{{ e.org | safe }}</p>
+          {% if e.detail %}
           <p class="tl-item__detail">{{ e.detail | safe }}</p>
+          {% endif %}
         </div>
         {% endfor %}
       </div>
